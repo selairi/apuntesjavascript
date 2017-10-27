@@ -1,0 +1,109 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Apuntes de Javascript';
+    var id_pagina = 'inicio';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Introducción</h1>
+
+<p>Javascript es un lenguaje del lado del cliente, por lo tanto se ejecuta en el navegador cuando cargamos una página web. Actualmente Javascript se ha expandido abarcando muchos más espacios y aplicaciones como <a href='https://nodejs.org'>NodeJS</a>, nos permiten ejecutarlo en el lado del servidor.</p>
+
+<p>Para poder iniciar el desarrollo con Javascript necesitamos un navegador como puede ser Firefox, un editor de texto (como pueden ser el bloc de notas, gedit,...) y mucha paciencia.</p>
+
+<p>En el caso de usar Firefox para el desarrollo tendremos que usar las herramientas del desarrollador para poder depurar y encontrar errores en nuestras páginas.</p>
+
+<img src='imagenes/index/desarrollador.png'></img>
+
+<p>Eligiremos "Consola web" y en la parte inferior del navegador se abrirá una ventana con las herramientas del desarrollador. La consola nos será útil para ver errores o mostrar mensajes de nuestro código. En el siguiente vídeo hay una descripción de las herramientas disponibles:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pCwo3YuShiA" frameborder="0" allowfullscreen></iframe>
+
+<p>Otro elemento importante es el inspector que permite hacer clic sobre un elemento e inspeccionar sus propiedades:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ScDf5TRagoo" frameborder="0" allowfullscreen></iframe>
+
+<p>Por último y no menos importante el depurador, que nos ayudará a encontrar fallos y errores en nuestro código Javascript.</p>
+
+<h1>Nuestro primer código</h1>
+
+<p>Para practicar vamos a empezar con nuestro primer programa en Javascript, el programa "Hola mundo":</p>
+
+<code id='hola_mundo1.html'></code>
+<script>insertar_codigo('src/index/hola_mundo1.html', 'hola_mundo1.html');</script>
+
+<p>Como se puede ver el código Javascript se introduce entre las etiquetas &lt;script&gt;&lt;/script&gt;. En este caso le ordena que escriba en pantalla "Hola mundo" usando la función "document.write(texto)". Por ejemplo, para escribir "Adios mundo", se sustituiría por:</p>
+<pre>
+    document.write('Adios mundo');
+</pre>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'><p>Es buen ejercicio intentar reproducir el código con nuestro editor de texto favorito y ver el resultado en el navegador.</p></div>
+
+<p>Hay otra forma de incluir el código dentro de las páginas y es ponerlo en otra archivo con la extensión ".js" e incluirlo dentro de nuestro código con:</p>
+<pre>
+    &lt;script scr='ruta al .js'&gt;&lt;/script&gt;
+</pre>
+
+<p>Por ejemplo:</p>
+<code id='hola_mundo2.html'></code>
+<script>insertar_codigo('src/index/hola_mundo2.html', 'hola_mundo2.html');</script>
+
+<p>En el archivo "hola_mundo.js" tendremos:</p>
+<code id='hola_mundo.js'></code>
+<script>insertar_codigo('src/index/hola_mundo.js', 'hola_mundo.js');</script>
+
+<p>¿Para qué puede servir esta segunda forma de incluir el Javascript en las páginas? Es útil para cuando se quiere insertar el mismo Javascript en varias páginas diferentes o bien cuando se va a introducir una cantidad elevada de código.</p>
+
+<h1>Cometarios</h1>
+
+<p>A veces nos interesará introducir comentarios en nuestro código. Estos comentarios son ignorados por el navegador, pero nos ayudarán mucho a entender el código o cómo se realiza una determinada tarea. Hay dos formas de introducir los comentarios:</p>
+
+<p>La primera forma es usando //. Los comentarios con // comienzan donde se introduce // y acaban en el final de la línea.</p>
+
+<code><pre>
+// Este es un comentario
+document.write('Hola mundo');  // Introduce 'Hola mundo' en la página
+// La siguiente línea no se ejecutará pues está comentada:
+// document.write('Adios mundo');
+</pre></code>
+
+<p>Otra forma de introducir los comentarios es usando /* y */. Los comentarios introducidos con /* acanban con */ y pueden extenderse varias líneas. Por ejemplo:</p>
+
+<code><pre>
+/*
+    Este es un comentario 
+    que se extiende varias líneas.
+*/
+document.write('Hola mundo'); /*Introduce 'Hola mundo' en la página*/
+/* La siguiente línea no se ejecutará pues está comentada:
+ document.write('Adios mundo');
+*/
+</pre></code>
+
+<h1>Toda instrucción acaba en ;</h1>
+
+<p>Como se ha visto en los ejemplos anteriores, se ponía un ; al final de cada orden que le dabamos al navegador:</p>
+
+<code><pre>
+    // Este ejemplo escribe 'Hola mundo Adios mundo'
+    document.write('Hola mundo');
+    document.write('Adios mundo'); // Cada orden acaba por ;
+</pre></code>
+
+<p>Hay situaciones en las que si por error no se pone el ; al final de la instrucción o se coloca un ; en el lugar inadecuado, se obtendrán resultados inesperados.</p>
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>

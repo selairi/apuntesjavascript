@@ -1,0 +1,287 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <title>Apuntes Javascript</title>
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Variables';
+    var id_pagina = 'variables';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Variables: Una forma de almacenar datos</h1>
+
+<p>Las variables nos proveen una forma de poder almacenar datos en la memoria RAM del ordenador. Van a ser cajas en las que introduciremos nuestros datos. Dentro de una caja podremos introducir varios valores, e incluso otras variables (podemos meter dentro de una caja otras cajas).</p>
+
+<p>Las variables en Javascript se declaran usando la palabra "var":</p>
+
+<code>
+<pre>
+    var a = 1;  // a vale 1
+    var b = 2;  // b vale 2
+    var c;      // Se declara c, pero no se le asigna ningún valor
+    c = a + b;  // Se hace la suma de a + b = 1 + 2 = 3, por lo tanto c = 3
+</pre>
+</code>
+
+<p>Como se ve en el ejemplo anterior se declaran tres variables a, b y c. Al final a la variable c se le asigna el valor de la suma de las variables a y b. Por lo tanto c valdrá 3. </p>
+
+<p>Otro ejemplo:</p>
+
+<code>
+<pre>
+    var a = 3;  // a vale 3
+    var b = 2;  // b vale 2
+    document.write(a*b); // Se escribe en pantalla 6
+</pre>
+</code>
+
+<p>A las variables les podemos poner el nombre que queramos, pero este nombre no debe comenzar por un número y sólo podremos usar los siguientes caracteres: De la a a la z (minúsculas), de la A a la Z (mayúsculas), del 0 al 9 y el símbolo _.</p>
+
+<p>Son nombres de variables válidos: pepe, Pepe, a, b, b1, b2, hola_mundo, _hola_mundo,...</p>
+
+<p>Son nombres de variables no válidos: 1pepe (comienza por un número), a+a (tiene el símbolo + que no se puede usar), hola-mundo (tiene el signo - que no lo podemos usar),...</p>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'><p>El navegador distingue entre mayúsculas y minúsculas, por lo tanto la variable pepe, será diferente de la variable Pepe y de la variable PePe.</p></div>
+
+<p>En los ejemplos anteriores se han asignado sólo valores numéricos a las variables, pero también se les pueden asignar otros valores:</p>
+
+<ul>
+    <li>Números ya sean con decimales (coma flotante, float en inglés) o sin decimales (enteros, integer en inglés). Por ejemplo: a = 3</li>
+    <li>Cadenas de texto. Por ejemplo: a = "Hola mundo"</li>
+    <li>Booleanos: Pueden valer verdadero (true) o falso (falso). Por ejemplo: a = true</li>
+    <li>Objetos: Como ya se han comentado son cajas en las que podemos meter dentro otras variables u otras cajas en las que insertar más variables. También pueden contener métodos que son pequeños programas que podemos ejecutar.</li>
+    <li>Funciones: Javascript permite crear pequeños programas que podemos ejecutar cuando sea necesario, estos programas reciben el nombre de funciones. Se puede asignar a una variable el código de una función, para hacer que la variable se comporte como una función.</li>
+</ul>
+
+<h1>El operador de asignación</h1>
+
+<p>Para asignar un valor a una variable usamos el signo = (operador de asignación):</p>
+<code><pre>
+    var x = 3;
+</pre></code>
+
+<p>Aparte del operador =, también existen += y -=. El operador += suma un valor a la variable:</p>
+<code><pre>
+    var x = 3;
+    x += 5; // Al final x = 8 (suma 5 a 3)
+</pre></code>
+
+<p>Poner x += 5 es equivalente a escribir x = x +5.</p>
+
+
+<h1>Booleanos</h1>
+
+<p>Sólo pueden tomar dos valores verdadero (true) y falso (false).</p>
+
+<code><pre>
+    var a = true;
+    var b = false;
+    a = 3 > 2;  // a = true, pues 3 es mayor que 2
+</pre></code>
+
+<h1>Números</h1>
+
+<p>Las operaciones que podemos hacer con los números son +, -, * (multiplicación) y / (división). Por ejemplo:</p>
+
+<code><pre>
+    var a = 3;
+    var b = 2;
+    var c;
+    c = 2 + 3;  // c = 5
+    c = a - 2;  // c = 1
+    c = a * 2;  // c = 6
+    c = a * b;  // c = 6
+    c = c / 2;  // c = 3 Recordar que el último valor que había tomado era 6.
+</pre></code>
+
+En el caso de que los números sean enteros, no tengan decimales, se pueden hacer 3 operaciones más:
+
+<p>% Resto de la división. Por ejemplo: a = 5 % 2; // a = 1 (que es el resto de la división de 5 entre 2)</p>
+
+<p>++ Aumenta en uno el valor del número. Por ejemplo: a = 3; a++; // a = 4</p>
+
+<p>-- Disminuye en uno el valor del número. Por ejemplo: a = 3; a--; // a = 2<br/>Otro ejemplo: a = 5; a++; // a = 6</p>
+
+<p>Los operadores ++ y -- tienen una propiedad curiosa que será útil en determinados casos: Cuando van detrás de la variable se incrementa/decrementa el valor de la variable después de habes superado en ;. Cuando van delante de la variable incrementan/decrementan el valor de la variable antes de evaluar ninguna otra variable. Por ejemplo:</p>
+
+<code><pre>
+    var a = 2;
+    var b = 3;
+    var c;
+    c = a + b;      // c = 5 Hasta aquí todo normal
+    c = a + b++ ;   /* ¡ c = 5 ! y b = 4. Antes de llegar el ; b valía 3, por lo tanto 
+                       se hace la operación c = 2 + 3, cuando se supera el ; se hace 
+                       que b incremente su valor */
+</pre></code>
+
+<p>El mismo ejemplo poniendo el operador ++ delante de la variable:</p>
+
+<code><pre>
+    var a = 2;
+    var b = 3;
+    var c;
+    c = a + b;      // c = 5 Hasta aquí todo normal
+    c = a + ++b ;   /* ¡ c = 6 ! y b = 4.  b valía 3 y se incrementa a b = 4, 
+                       por lo tanto se hace la operación c = 2 + 4 */
+</pre></code>
+
+<h1>Cadenas de texto</h1>
+
+<p>Javascript permite crear una cadena de texto simplemente poniéndola entre comillas. Por ejemplo:</p>
+
+<code><pre>
+    var a = "Hola mundo";
+    document.write(a);  // Escribirá Hola mundo
+</pre></code>
+
+<p>Para crear una cadena se pueden usar comillas dobles " o simples ':</p>
+
+<code><pre>
+    var a = "Hola mundo";
+    var a = 'Hola mundo';
+</pre></code>
+
+<p>Con comillas simples y dobles sólo podemos introducir textos que ocupen una línea. En el caso de querer introducir textos que ocupen varias líneas se usará el acento invertido ` (es un acento y como los que se ponen a las vocales (àèìòù) pero está invertido). El acento invertido suele estar en el teclado a la derecha de la tecla p. Un ejemplo:</p>
+
+<code><pre>
+    var a = `Este texto 
+        puede ocupar
+        varias líneas`
+</pre></code>
+
+<p>La única operación que se puede realizar con las cadenas de texto es la concatenación, que consiste en unir dos cadenas de texto poniéndolas una a continuación de la otra. Se realiza con el operador +:</p>
+
+<code><pre>
+    var cadena1 = "Hola";
+    var cadena2 = "Mundo";
+    document.write(cadena1+cadena2);    // Escribe HolaMundo
+</pre></code>
+
+<h2>Conversión implícita de tipos</h2>
+
+<p>Supongamos el siguiente ejemplo:</p>
+
+<code><pre>
+    var cadena1 = "Hola";
+    var b = 2;
+    document.write(cadena1+b);    // Escribe Hola2
+</pre></code>
+
+<p>En el ejemplo anterior la operación que realiza Javascript es: cadena1 es una cadena de texto, b es un entero. Al realizar cadena1+b convierte b a cadena de texto, por lo que al final tenemos una concatenación de la cadena "Hola" con la cadena "2".</p>
+
+<p>Veamos otro ejemplo:</p>
+
+<code><pre>
+    var a = "23";
+    var b = "45";
+    document.write(a+b);    // Escribe 2345
+</pre></code>
+
+<p>Como a y b son cadenas de texto, en pantalla aparecerá la cadena "2345", en lugar de hacer la suma de 23+45=68.</p>
+
+<p>Un caso especial son cuando no existe el operador para el tipo dado y el interprete de Javascript improvisa. Por ejemplo, las cadenas de texto poseen el operador + (que concatena), pero no disponen del operador * (multiplicar):</p>
+
+<code><pre>
+    var a = "23";
+    var b = "45";
+    document.write(a*b);    // Escribe 1035
+</pre></code>
+
+<p>En este caso el intérprete se da cuenta que * no es un operador de cadenas de texto e intenta improvisar. En este caso sí puede realizar la operación de 23*45=1035.</p>
+
+<p>Hay otras situaciones en que esto no es posible:</p>
+
+<code><pre>
+    var a = "Hola";
+    var b = "45";
+    document.write(a*b);    // Escribe NaN
+</pre></code>
+
+<p>En este caso el intérprete de Javascript escribe NaN (Not a Number) indicando que no se puede realizar la operación.</p>
+
+<h2>Conversión explícita de tipos</h2>
+
+<p>Puede interesar convertir una cadena de texto a un número. Para ello se usan las funciones:</p>
+
+<p><b>parserInt(cadena)</b> Convierte una cadena de texto en un número entero (un número sin decimales). Por ejemplo:</p>
+
+<code><pre>
+    var a = "23";
+    var b = 2;
+    var c = parseInt(a);    // c = 23 número, no cadena de texto
+    document.write(b+c);    // Escribe 25 la suma de 23 + 2
+    document.write(a+b);    // Escribe 232, concatena la cadena "23" con 2.
+</pre></code>
+
+<p><b>parseFloat(cadena)</b> Convierte una cadena de texto en un número en coma flotante (un número con decimales). Por ejemplo:</p>
+
+<code><pre>
+    var a = "23.5";
+    var b = 2;
+    var c = parseFloat(a);    // c = 23.5 número, no cadena de texto
+    document.write(b+c);    // Escribe 25.5 la suma de 23.5 + 2
+    document.write(a+b);    // Escribe 23.52, concatena la cadena "23.5" con 2.
+</pre></code>
+
+<p>También puede interesar convertir un número a cadena de texto. Esto se hará con el método <b>toString()</b>:</p>
+
+<code><pre>
+    var a = 23.5;
+    var b = 2;
+    document.write(a.toString()+b.toString());    // Escribe 23.52, concatena la cadena "23.5" con "2".
+</pre></code>
+
+<h1>undefined y null</h1>
+
+<p>Una variable declarada a la que no se le ha asignado ningún valor, se le asigna por defecto el valor <b>undefined</b>:</p>
+
+<code><pre>
+    var a;
+    document.write(a);  // Se escribe undefined, pues a a no se le ha asignado ningún valor
+</pre></code>
+
+<p><b>null</b> se usa cuando se desea borrar de la RAM alguna variable. Por ejemplo:</p>
+
+<code><pre>
+    var a = 2;  // Se alamacena un 2 en la RAM
+    a = null;   // Se libera el espacio asignado al 2 de la RAM
+</pre></code>
+
+<h1>prompt y alert</h1>
+
+<p>La función <b>alert(mensaje)</b> muestra una ventana emergente del navegador con un texto en ella.</p>
+
+<p>Por ejemplo:</p>
+<code id='alert.html'></code>
+<script>insertar_codigo('src/variables/alert.html', 'alert.html');</script>
+
+<p>La función <b>prompt(mensaje)</b> solicita al usuario que introduzca un valor. Por ejemplo:</p>
+
+<code id='prompt.html'></code>
+<script>insertar_codigo('src/variables/prompt.html', 'prompt.html');</script>
+
+<p>Si se ejecuta el ejemplo anterior, se puede descubrir que los datos introducidos por el usuario son leidos como cadenas de texto. Por lo tanto, si el usuario introduce un 4, al llegar a alert(2+a), se mostrará "24".</p>
+
+<p>Si queremos que el valor introducido por el usuario se convierta en un número, tendremos que usar las funciones parseInt o parseFloat.</p>
+
+<p>Por ejemplo:</p>
+<code id='prompt1.html'></code>
+<script>insertar_codigo('src/variables/prompt1.html', 'prompt1.html');</script>
+
+<p>En el ejemplo anterior con el uso de la función parseInt, la salida del comando prompt se transforma en un número entero y por ello se le puede sumar el 2.</p>
+
+
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>

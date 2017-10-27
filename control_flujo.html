@@ -1,0 +1,364 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Estructuras de control de flujo';
+    var id_pagina = 'control_flujo';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>if</h1>
+
+<p>Con la estructura if se puede controlar si se ejecuta una determinada parte del código. Por ejemplo, se le puede pedir al usuario su edad y si es menor de edad, no se le permita el acceso.</p>
+
+<p>La estructura if tiene la siguiente forma:</p>
+
+<code><pre>
+    if(codición) {
+        // Se ejecuta si la condición es cierta
+    }
+</pre></code>
+
+<p>Por ejemplo:</p>
+
+<code><pre>
+    var a = 2;
+    var b = 3;
+    if( a &lt; b) {
+        document.write("a es menor que b");
+    }
+</pre></code>
+
+<p>En el ejemplo anterior a vale 2 y b vale 3. La condición dice que como a es menor que b (2 &lt; 3) entonces se escribirá "a es menor que b".</p>
+
+<p>Otro ejemplo:</p>
+
+<code><pre>
+    var a = 2;
+    var b = 3;
+    if( a &gt; b) {
+        document.write("a es mayor que b");
+    }
+</pre></code>
+
+<p>Es este caso como a es menor que b, no se llega a entrar dentro del if.</p>
+
+<p>Las llaves después del if { ... }, se colocan cuando se van a ejecutar varias instrucciones. En el caso de que sólo se vaya a ejecutar una, la estructura se puede simplificar quitando las llaves:</p>
+
+<code><pre>
+    var a = 2;
+    var b = 3;
+    if( a &gt; b)
+        document.write("a es mayor que b");
+</pre></code>
+
+<h2>Operadores de comparación</h2>
+
+<p>Según el tipo de datos que se esté comparando, se pueden usar los siguientes comparadores. Por ejemplo, con números podremos usar los comparadores:</p>
+<ul>
+    <li> &gt; Mayor que por ejemplo 3 &gt; 2</li>
+    <li> &lt; Menor que por ejemplo 2 &lt; 3</li>
+    <li> &gt;= Mayor o igual que por ejemplo 3 &gt;= 2</li>
+    <li> &lt;= Menor o igual que por ejemplo 2 &lt;= 3</li>
+    <li> == Igual a por ejemplo 3 == 3</li>
+    <li> != Distinto a por ejemplo 4 != 3</li>
+</ul>
+
+<p>Con cadenas de texto y booleanos se pueden usar los comparadores:</p>
+<ul>
+    <li> == Igual a por ejemplo "Hola" == "Hola"</li>
+    <li> != Distinto a por ejemplo "Hola" != "adios"</li>
+</ul>
+
+<p>En el caso de comparar cualquier variable, se pueden usar los comparadores == y !=.</p>
+
+<h1>if - else</h1>
+
+<p>Un ejemplo de comparación de cadenas:</p>
+<code id='prompt.html'></code>
+<script>insertar_codigo('src/control_flujo/prompt.html', 'prompt.html');</script>
+
+<p>En el ejemplo anterior se solocita una contraseña al usuario, si es 12345, aparece el mensaje acceso concedido. Pero supongamos que cuando el usuario teclee una contraseña incorrecta, se escriba "Contraseña incorrecta". Para estos casos se usa la estructura else:</p>
+
+<code><pre>
+    if(condición) {
+        // Se ejecuta si la condición es cierta
+    } else {
+        // Se ejecuta si la condición es falsa
+    }
+</pre></code>
+
+<p>Así el ejemplo anterior quedaría:</p>
+<code id='prompt1.html'></code>
+<script>insertar_codigo('src/control_flujo/prompt1.html', 'prompt1.html');</script>
+
+<h1>else if</h1>
+
+<p>Hay situaciones en las que se pueden dar varias condiciones. Por ejemplo, imaginemos una taquilla de un cine que en función de la edad hagan descuentos diferentes. Se tendrán entonces varias condiciones en función de la edad como podrían ser los menores de 10 años pagan 5 €, los menores de 18 € pagan 6 €, los menores de 60 años pagan 10 € y los mayores de 60 no pagan.</p>
+
+<p>Para estas situaciones se usa la estructura if - else if - else:</p>
+
+<code><pre>
+    if(condición 1) {
+        // Se ejecuta si se cumple la condición 1
+    } else if (condición 2) {
+        // Se ejecuta si se cumple  la condición 2
+    } else if (condición 3) {
+        // Se ejecuta si se cumple  la condición 3
+    }  else if (condición n) {
+        // Se ejecuta si se cumple  la condición n
+    } else {
+        // Se ejecuta si ninguna de las condiciones
+        // se cumple.
+    }
+</pre></code>
+
+<p>Por ejemplo:</p>
+
+<code><pre>
+    var edad = 10;
+    var precio;
+    if(edad &lt; 10) {
+        precio = 5;
+    } else if(edad &lt; 18) {
+        precio = 6;
+    } else if(edad &lt; 60) {
+        precio = 10;
+    } else {
+        precio = 0;
+    }
+</pre></code>
+
+<p>Como en el caso anterior edad = 10 el precio será 6 €.</p>
+
+<p>El orden de las condiciones es importante, por ejemplo:</p>
+
+<code><pre>
+    var edad = 18;
+    var precio;
+    if(edad &lt; 60) {
+        precio = 10;
+    } else if(edad &lt; 10) {
+        precio = 5;
+    } else if(edad &lt; 18) {
+        precio = 6;
+    } else {
+        precio = 0;
+    }
+</pre></code>
+
+<p>Como la primera condición es edad &lt; 60 se entra en la primera condición, precio = 10 y no se siguen evaluando las siguientes condiciones.</p>
+
+<h1>Operaciones lógicas</h1>
+
+<p>En muchos casos se van a necesitar condiciones del tipo "si esto y esto otro es verdad entonces ...", es decir, que se cumplan varias condiciones a la vez o al menos una condición entre varias. Para esto se usan las operaciones lógicas.</p>
+
+<p>Las operaciones lógicas más comunes son:</p>
+<ul>
+    <li>&amp;&amp; Operador y. Es cierto cuando todas las condiciones son ciertas. Por ejemplo:
+    <code><pre>
+        var x = 10;
+        if ( x &lt; 20 <strong>&amp;&amp;</strong> x &gt; 5 ) {
+            // Se ejecuta cuando x es menor que 20 <strong>y</strong> x mayor que 5.
+            alert('El número está entre 5 y 20');
+        } 
+    </pre></code>
+    <p>Si es necesario se pueden poner varias condiciones:</p>
+    <code><pre>
+        var x = 10;
+        var b = 3;
+        if ( x &lt; 20 <strong>&amp;&amp;</strong> x &gt; 5 <strong>&amp;&amp;</strong> b == 3 ) {
+            // Se ejecuta cuando x es menor que 20 <strong>y</strong> x mayor que 5
+            // <strong>y</strong> b es igual a 3.
+            alert('El número está entre 5 y 20 y b es igual a 3');
+        }
+    </pre></code>
+    </li>
+    <li>|| Operador o. Es cierto cuando alguna de las condiciones es cierta. Por ejemplo:
+    <code><pre>
+        var x = 10;
+        var b = 3;
+        if ( x &lt; 20 <strong>||</strong> x &gt; 5 <strong>||</strong> b == 3 ) {
+            // Se ejecuta cuando x es menor que 20 <strong>o</strong> x mayor que 5
+            // <strong>o</strong> b es igual a 3.
+            alert('Se cumple una de las condiciones');
+        }
+    </pre></code>    
+    </li>
+    <li>! Operador de negación. Si la condición es cierta devuelve falso, si es falsa, devuelve cierto:
+    <code><pre>
+        var x = 11;
+        if( ! x == 10 ) {
+            // Se ejecuta cuando x no es igual a 10.
+            // Es equivalente a x != 10
+            ...
+        }
+    </pre></code>
+
+    </li>
+</ul>
+
+<p>A veces va a interesar mezclar operadores. Por ejemplo:</p>
+<code id='prompt2.html'></code>
+<script>insertar_codigo('src/control_flujo/prompt2.html', 'prompt2.html');</script>
+<p>Como se puede ver en el ejemplo, se usan paréntesis para agrupar las condiciones. Por un lado se agrupa la condición (x &gt;= 1 &amp;&amp; x &lt;= 10) y por otro las condiciones de si es número primo.</p>
+
+A parte de los operadores &amp;&amp; y || existen los operadores &amp; y |. Su uso es igual que el de &amp;&amp; y || respectivamente, pero existe una diferencia. Fíjemonos en el siguiente código:
+<code id='prompt3.html'></code>
+<script>insertar_codigo('src/control_flujo/prompt3.html', 'prompt3.html');</script>
+<p>Imaginemos que x = 3. En la condición ( x == 2 | x == 3 | x == 5 | x == 7 ) se evalua x==2 y se ve que es falsa, se evalua x==3 y se ve que es cierta, se evalua x==5 y se ve que es falsa y finalmente se evalua x==7 y se ve que es falsa. Como una de las condiciones es cierta (x==3) la condición es cierta.</p>
+<p>Imaginemos que x = 3. En la condición ( x == 2 || x == 3 || x == 5 || x == 7 ) se evalua x==2 y se ve que es falsa, se evalua x==3 y se ve que es cierta. Como el operador || es cierto si alguna de las condiciones es cierta, no es necesario seguir evaluando.</p>
+
+<p>Se pueden ejecutar funciones dentro de las condiciones, con los operadores &amp; y | nos aseguramos que esas funciones se ejecuten:</p>
+<code id='prompt4.html'></code>
+<script>insertar_codigo('src/control_flujo/prompt4.html', 'prompt4.html');</script>
+<p>En el ejemplo anterior el primer if siempre ejecutará la función prompt. En el segundo, si x vale 2 ó 3, no lo preguntará.</p>
+
+<h1>Bucle while</h1>
+
+<p>El bucle while repite un código mientras la condición sea cierta. Su estructura es:</p>
+
+<code><pre>
+    while(condición) {
+        // Esta parte se repite mientras la condición sea cierta
+        ...
+    }
+</pre></code>
+
+<p>Por ejemplo:</p>
+<code id='while1.html'></code>
+<script>insertar_codigo('src/control_flujo/while1.html', 'while1.html');</script>
+
+<p>Este código escribe los números del 0 al 9.</p>
+
+<p>El bucle while puede ayudar a escribir menos código dentro de una página web. Por ejemplo, el siguiente código escribe la tabla de multiplicar del 4:</p>
+<code id='while2.html'></code>
+<script>insertar_codigo('src/control_flujo/while2.html', 'while2.html');</script>
+
+<p>Todo bucle tiene que cumplir lo siguiente: Tiene que tener algo que haga parar el bucle, en el caso anterior la condición (x&lt;10) y algo que haga avanzar al bucle (x++). En caso contrario el bucle se ejecutará hasta el infinito. En estos casos el programa puede dejar de responder y dar la sensación de que "se ha colgado".</p>
+
+<p><strong>break</strong> es una forma de forzar la salida de un bucle. Por ejemplo:</p>
+<code id='while3.html'></code>
+<script>insertar_codigo('src/control_flujo/while3.html', 'while3.html');</script>
+<p>En este caso la condición del while es siempre (true), por lo que el bucle se ejecutaría infinitamente. Pero más adelante se tiene la condición:
+<code><pre>
+    if(x == 11) break;
+</pre></code>
+que hace que cuando x sea 11, el bucle se pare.
+</p>
+
+<h1>Bucle for</h1>
+
+<p>Un bucle muy utilizado es el bucle for. Con el bucle while se pueden hacer todas las operaciones de los bucles, pero el bucle for es una forma de while que se usa mucho. Lo emplearemos cuando que haya que hacer una enumeración (por ejemplo, contar del 1 al 100). La estructura del bucle for es la siguiente:</p>
+<code><pre>
+    for(asignación-inicial; condición; avance) {
+        // Instrucciones a repetir
+    }
+</pre></code>
+
+<p>La asignación inicial sólo se ejecuta una vez antes de iniciar el bucle, la condición y el avance se evaluan a cada paso del bucle. El bucle finaliza cuando acaba la condición. Es equivalente al siguiente bucle while:</p>
+<code><pre>
+    asignacion-inicial;
+    while(condición) {
+        // Instrucciones a repetir
+        avance;
+    }
+</pre></code>
+
+<p>Un ejemplo contando los números del 0 al 9:</p>
+<code id='for1.html'></code>
+<script>insertar_codigo('src/control_flujo/for1.html', 'for1.html');</script>
+
+<p>Al igual que en el bucle while, se puede usar break para parar la ejecución del bucle:</p>
+
+<code id='for2.html'></code>
+<script>insertar_codigo('src/control_flujo/for2.html', 'for2.html');</script>
+<p>El código anterior escribe los números pares del 0 al 10.</p>
+
+<h1>Bucle do - while</h1>
+
+<p>Es un bucle muy similar al bucle while, pero las instrucciones a repetir se ejecutan al menos una vez. Su estructura:</p>
+<code><pre>
+    do {
+        // Instrucciones a repetir
+    } while(condición);
+</pre></code>
+
+<p>Por ejemplo, para escribir los números del 0 al 9:</p>
+<code id='dowhile1.html'></code>
+<script>insertar_codigo('src/control_flujo/dowhile1.html', 'dowhile1.html');</script>
+
+<h1>switch - case</h1>
+
+<p>Existen ocasiones en los que hay que usar condiciones como las siguientes:</p>
+<code><pre>
+    var x = 10;
+    if( x == 2) {
+        alert('Pague dos y lleve una');
+    } else if( x == 3) {
+        alert('Pague tres y lleve dos');
+    } else if( x == 4) {
+        alert('Pague cuatro y lleve dos');
+    } else {
+        alert('En esta tienda siempre te engañan');
+    }
+</pre></code>
+
+<p>En el caso en el que se tengan varias condiciones en las que un número entero deba ser igual a otro entero, se puede simplificar usando las estructura switch - case. Sólo vale para números enteros:</p>
+<code><pre>
+    var x = 10;
+    switch( x ) {
+        case 2:
+            alert('Pague dos y lleve una');
+            break;
+        case 3:
+            alert('Pague tres y lleve dos');
+            break;
+        case 4:
+            alert('Pague cuatro y lleve dos');
+            break;
+        default:
+            alert('En esta tienda siempre te engañan');
+    }
+</pre></code>
+
+<p>Su sintaxis es:</p>
+<code><pre>
+    switch( variable ) {
+        case valor-1:
+            // Se ejecutan si variable == valor-1
+            break;
+        case valor-2:
+            // Se ejecutan si variable == valor-2
+            break;
+        // ...
+        case valor-n:
+            // Se ejecutan si variable == valor-n
+            break;
+        default:
+            // Se ejecuta si no se cumple ninguna de las condiciones anteriores
+    }
+</pre></code>
+
+<h1>Estructuras anidadas</h1>
+
+<p>Dentro de una estructura se van a poder introducir otras, un if dentro de un while, un while dentro de un if, un if dentro de otro if,...</p>
+
+<p>Mención a parte merecen los bucles. Por ejemplo:</p>
+<code id='for3.html'></code>
+<script>insertar_codigo('src/control_flujo/for3.html', 'for3.html');</script>
+<p>En el ejemplo anterior hay un bucle for dentro de otro bucle for. El bucle for de la variable x se ejecuta 10 veces (del 0 al 9). El bucle for de la variable y cuenta del 0 al 9 y está dentro del bucle for de la x, por lo tanto el document.write(x*y) se va a repetir 100 veces (10 veces del bucle for de x y 10 veces del bucle for de y). </p>
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
