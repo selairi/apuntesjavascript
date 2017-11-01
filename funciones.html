@@ -1,0 +1,93 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Funciones';
+    var id_pagina = 'funciones';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Funciones</h1>
+
+<p>En muchas ocasiones la misma porción de código es necesaria ejecutarla en varias partes. Por ejemplo, tenemos varias páginas web y todas tienen la misma barra de navegación. Podríamos copiar y pegar el código de la barra de navegación en cada página. Pero si hacemos una modificación en la barra de navegación tendríamos que ir página por página añadiendo dicha modificación.</p>
+
+<p>Una forma muy cómoda de trabajar con partes de código que se van a repetir mucho son las funciones. La sintaxis de una función es la siguiente:</p>
+
+<code><pre>
+    <b>function</b> nombre_de_la_función(argumento1, argumento2, argumento3, ...) {
+        // Código a ejecutar
+        return valor_a_devolver;
+    }
+</pre></code>
+
+<p>Por ejemplo, supongamos una función que escribe un texto:</p>
+
+<code><pre>
+    function texto() {
+        document.write("Este es un texto largisimo");
+        document.write("Más texto");
+    }
+</pre></code>
+
+<p>Para ejecutarlo, simplemente llamaríamos a la función por su nombre:</p>
+
+<code><pre>
+    texto();
+</pre></code>
+
+<p>Es decir, cade vez que se escriba "texto()", será como si se sustituyera por el código de la función.</p>
+
+<p>Por ejemplo:</p>
+<code id='funciones1.html'></code>
+<script>insertar_codigo('src/funciones/funciones1.html', 'funciones1.html');</script>
+
+<p>Este código es equivalente a:</p>
+<code id='funciones2.html'></code>
+<script>insertar_codigo('src/funciones/funciones2.html', 'funciones2.html');</script>
+
+<p>En el ejemplo anterior se puede ver la ventaja de las funciones, si modifico la función se modifica la salida de la función en todos los puntos en donde se la invoque.</p>
+
+<h2>Funciones con argumentos</h2>
+
+<p>El ejemplo anterior era una función que no admitía argumentos. Se le pueden pasar argumentos a la función de forma que estos son pasados como variables que la función puede manejar. Por ejemplo:</p>
+
+<code><pre>
+    function suma(a,b) {
+        document.write(a+b);
+    }
+</pre></code>
+
+<p>A la función anterior se le van a pasar dos argumentos a y b. La función escribirá el resultado de sumar ambos valores. Es decir, cuando se escriba:</p>
+<code><pre>
+    suma(2, 3);
+</pre></code>
+
+<p>Esto será equivalente a:</p>
+
+<code><pre>
+    {
+        var a = 2;
+        var b = 3;
+        document.write(a+b);
+    }
+</pre></code>
+
+<p>Se pueden buscar ejemplos más elaborados, como el siguiente que muestra las tablas de multiplicar:</p>
+<code id='funciones3.html'></code>
+<script>insertar_codigo('src/funciones/funciones3.html', 'funciones3.html');</script>
+
+
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>

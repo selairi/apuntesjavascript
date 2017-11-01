@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset='utf-8' />
+<script>
+    // Esta función escribe la tabla de multiplicar del número que se le pase:
+    function tabla(numero) {
+        var x;
+        for(x=0;x<=10;x++) {
+            document.write(numero + 'x' + x + '=' + (numero*x) + '<br/>');
+        }
+        document.write('<br/>');
+    }
+    
+    // Se muestan las tablas de multiplicar del 0 al 10
+    var n;
+    for(n = 0; n <= 10; n++) 
+        tabla(n);
+</script>
