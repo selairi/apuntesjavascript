@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset='utf-8' />
+<script>
+
+    
+    function calcular(precio, operacion)
+    {
+        precio += operacion(10);
+        return precio;
+    }
+    
+    // Se le pasa como argumento la función sin nombre que calcula en iva
+    var resultado = calcular(10,  function(precio) {return precio*1.21;} ); 
+    document.write(resultado);
+</script>

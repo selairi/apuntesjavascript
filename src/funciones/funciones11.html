@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset='utf-8' />
+<script>
+    var iva = function(precio)
+    {
+        return precio*1.21;
+    }
+    
+    function calcular(precio, operacion)
+    {
+        precio += operacion(10);
+        return precio;
+    }
+    
+    var resultado = calcular(10, iva); // Se le pasa como argumento la función iva
+    document.write(resultado);
+</script>

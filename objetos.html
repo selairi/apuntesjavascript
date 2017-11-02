@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Objetos';
+    var id_pagina = 'objetos';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Objetos</h1>
+
+<p>Uno objeto será como una caja en la que vamos a poder almacenar otras cajas. Es decir, tendremos una variable y dentro de esta variable se podrán almacenar más variables o funciones. Por ejemplo, se ha estado usando la función "document.write()". Lo que realmente se ha estado haciendo es del objeto document, usar la variable write que alamacena una función. El operador "." (punto) sirve para obtener los contenidos de un objeto. Por ejemplo:</p>
+<code id='objetos1.html'></code>
+<script>insertar_codigo('src/objetos/objetos1.html', 'objetos1.html');</script>
+
+<p>Como se ve en el ejemplo, dentro del objeto document, se han almacenado las variables a y b y nos referíamos a ellas como document.a y document.b.</p>
+
+<h2>Definiendo objetos a partir funciones</h2>
+
+<p>Hay varias formas de definir un objeto en Javascript. Lo más común es usar una función. La palabra clave <strong>this</strong> se referirá al objeto que estamos creando o manejando. Por ejemplo:</p>
+<code id='objetos2.html'></code>
+<script>insertar_codigo('src/objetos/objetos2.html', 'objetos2.html');</script>
+
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
