@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset='utf-8' />
+<script>
+    // Esta función devuelve el precio a pagar en función de la edad
+    function precio(edad) {
+        if(edad < 10) {
+            document.write("Debe pagar: 5");
+            return ;  // Return no tiene argumentos, no devuelve nada
+        } else if(edad < 18) {
+            document.write("Debe pagar: 10");
+            return ;
+        } else if(edad < 60) {
+            document.write("Debe pagar: 15");
+            return ;
+        } else
+            document.write("Debe pagar: 5");
+    }
+    
+    var edad_cliente = parseInt(prompt('Introduzca su edad'));
+    precio(edad_cliente);
+</script>

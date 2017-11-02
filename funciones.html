@@ -83,7 +83,80 @@
 <code id='funciones3.html'></code>
 <script>insertar_codigo('src/funciones/funciones3.html', 'funciones3.html');</script>
 
+<p>En el ejemplo anterior no es necesario el uso de funciones, per hacen que ciertas partes del código resulten más legibles.</p>
 
+<h2>Funciones que devuelven valores</h2>
+
+<p>Para la función devuelva un valor se usa return. Veamos el siguiente ejemplo:</p>
+
+<code><pre>
+    // Calcula el precio más un 21 % de IVA
+    function iva(precio) {
+        return precio*1.21;
+    }
+</pre></code>
+
+<p>Esta función luego se puede llamar donde sea necesaria y recoger el valor devuelto. Por ejemplo:</p>
+
+<code><pre>
+    // Calcula el precio más un 21 % de IVA
+    function iva(precio) {
+        return precio*1.21;
+    }
+    
+    var a_pagar = 0;
+    a_pagar += iva(100);
+    a_pagar += iva(20);
+    
+    document.write("El total a pagar es: " + a_pagar);
+</pre></code>
+
+<p>En el siguiente ejemplo, la función calcula la suma de los números de a a b:</p>
+<code id='funciones4.html'></code>
+<script>insertar_codigo('src/funciones/funciones4.html', 'funciones4.html');</script>
+
+<p>Una función puede tener varios return, pero cuando se llegue a ejecutar el primero, el programa sale de la función y no continua evaluándola:</p>
+<code id='funciones5.html'></code>
+<script>insertar_codigo('src/funciones/funciones5.html', 'funciones5.html');</script>
+
+<p>return se puede usar dentro de la estructura if - else para devolver diferentes respuestas:</p>
+<code id='funciones6.html'></code>
+<script>insertar_codigo('src/funciones/funciones6.html', 'funciones6.html');</script>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'><p>Se puede usar return sin argumentos para salir de una función que no devuelve valores. Por ejemplo:</p>
+<code id='funciones7.html'></code>
+<script>insertar_codigo('src/funciones/funciones7.html', 'funciones7.html');</script>
+</div>
+
+<h1>Visibilidad de las variables</h1>
+
+<p>Las variables que se definen dentro de una función se destruyen al salir de ella. Veamos el siguiente ejemplo:</p>
+<code id='funciones8.html'></code>
+<script>insertar_codigo('src/funciones/funciones8.html', 'funciones8.html');</script>
+
+<p>En el ejemplo se define b dentro de la función. Pero al salir de la función las variables que se han definido dentro de la función se destruyen. Por eso la última línea "document.write(b);" no llega a ejecutarse y el intérprete genera un error diciendo que b no está definida.</p>
+
+<p>Pero qué sucede con una variable que ha sido definida antes de entrar en la función:</p>
+<code id='funciones9.html'></code>
+<script>insertar_codigo('src/funciones/funciones9.html', 'funciones9.html');</script>
+
+<p>Como se puede apreciar, la variable a está definida antes de entrar en la función. La función puede tomar el valor de a y cambiarlo. Al final de la ejecución el programa nos devuelve que a vale 15.</p>
+
+<p>Las variables definidas fuera de una función y que se van a modificar dentro de una función se denominan <strong>variables globales</strong>. Se recomienda no usarlas o usarlas lo menos que se pueda, pues son fuente de errores y complican la lectura de los programas. Lamentablemente en Javascript hay que usarlas en muchas ocasiones.</p>
+
+<h1>Funciones como variables</h1>
+
+<p>Una característica útil es la de poder almacenar a las funciones como si fueran variables, e incluso pasarlas como argumentos de funciones:</p>
+<code id='funciones10.html'></code>
+<script>insertar_codigo('src/funciones/funciones10.html', 'funciones10.html');</script>
+
+<p>Como se puede ver se asigna a la variable iva una función (esta función no tiene nombre, por lo que se denomina <strong>función sin nombre</strong>). Luego se asigna iva a la variable b. Por lo que tanto la función iva como la función b hacen lo mismo.</p>
+
+<p>Puesto que actúan como variables se pueden pasar como argumentos de otras funciones.</p>
+
+<h1>Definiendo objetos a partir funciones</h1>
+
+<p>Uno objeto será como una caja en la que vamos a poder almacenar otras cajas. Es decir, tendremos una variable y dentro de esta variable se podrán almacenar más variables o funciones.</p>
 
 <script>
     post_pagina(titulo, id_pagina);

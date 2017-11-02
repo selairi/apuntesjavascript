@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset='utf-8' />
+<script>
+    // Esta función calcula la suma de los números de a a b:
+    function suma_numeros(a,b) {
+        var x;
+        var suma = 0;
+        for(x=a;x<=b;x++) {
+            suma += x;
+        }
+        return suma;
+    }
+    
+    document.write("La suma de los números del 1 al 100 es: "+ suma_numeros(1,100) );
+    document.write("La suma de los números del 23 al 58 es: "+ suma_numeros(23,58) );
+</script>
