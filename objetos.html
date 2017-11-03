@@ -28,6 +28,72 @@
 <code id='objetos2.html'></code>
 <script>insertar_codigo('src/objetos/objetos2.html', 'objetos2.html');</script>
 
+<p>Como se puede ver dentro de la función Persona se hacen varias referencias a <strong>this</strong> que es el objeto que se está creando. Se puede apreciar que se le han asignado las variables edad, altura y peso. También se le ha agregado la función engordar.</p>
+
+<p>A las variables que se definen dentro de un objeto se las llama <strong>atributos</strong>. A las funciones que se definen dentro de un objeto se las llama <strong>métodos</strong>.</p>
+
+<p>El ejemplo anterior se puede ver que para crear un nuevo objeto se usa el operador <strong>new</strong>. Usando <strong>new</strong> se crea el objeto pepe y se acceden a sus atributos y métodos:</p>
+
+<code><pre>
+    var pepe = <strong>new</strong> Persona(20);
+    document.write("Edad " + pepe.edad + "&lt;br/&gt;");
+    document.write("nombre " + pepe.nombre + "&lt;br/&gt;");
+    document.write("altura " + pepe.altura + "m &lt;br/&gt;");
+    document.write("peso " + pepe.peso + "kg &lt;br/&gt;");
+    pepe.engordar(11);
+    document.write("Ha engordado. peso " + pepe.peso);
+</pre></code>
+
+<h1>Punteros a objetos</h1>
+
+<p>Las variables tienen una forma especial de tratar a los objetos. Veamos el siguiente ejemplo:</p>
+<code id='objetos3.html'></code>
+<script>insertar_codigo('src/objetos/objetos3.html', 'objetos3.html');</script>
+
+<p>Por defecto cuando se crea el objeto pepe, su peso es 70. Hemos asignado a la variable jose, la variable pepe. Después se ejecuta jose.engordar(10). Cuando se muestra el peso de pepe, se puede ver que pepe ha engordado. ¿Por qué? Porque jose y pepe son el mismo objeto. En la memoria RAM del equipo se crea una zona para almacenar al objeto pepe, cuando se hace jose=pepe, se le está diciendo a la variable jose que apunte a donde está almacenado el objeto pepe:</p>
+<img src='imagenes/objetos/ram.svg'></img>
+<p>Pero para el caso de variables que no son objetos, como los números, javascript sí saca una copia, como se puede ver en las variables a y b. Al hacer b=a, javascript saca una copia de a y se la asigna a b por lo que a y b apuntan a regiones diferentes de la RAM. Por ello, al modificar b, no se modifica a.</p>
+
+<h1>Objetos del navegador</h1>
+
+<p>Los navegadores definen sus propios objetos, con lo que se va a disponer de un arsenal de objetos ya preparados para realizar algunas acciones. En el siguiente enlace se encuentra una guía rápida para ver los objetos y sus métodos:</p>
+<a href='http://www.dannyg.com/dl/JSB6RefBooklet.pdf' target='blank'>http://www.dannyg.com/dl/JSB6RefBooklet.pdf</a>
+<p>Aunque existen guías mas avanzadas como la del navegador Mozilla Firefox:</p>
+<a href='https://developer.mozilla.org/en-US/docs/Web/API' target='blank'>https://developer.mozilla.org/en-US/docs/Web/API</a>
+
+<p>Estas son guías de referencia. En el caso de necesitar hacer algo, buscaremos el objeto y dentro del objeto, el método que necesitemos ejecutar. Clásicamente los objetos más interesantes son:</p>
+<ul>
+<li>Objetos del lenguaje: se pueden encontrar en: <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects</a></li>
+<ul>
+<li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math'>Math</a>: Son las funciones matemáticas típicas. Por ejemplo, la raíz cuadrada:
+<code><pre>
+    document.write(Math.sqrt(2));
+</pre></code>
+</li>
+<li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'>Date</a>: Sirve para hacer cálculos con la fecha y/o la hora. También se puede obtener la fecha actual:
+<code id='objetos4.html'></code>
+<script>insertar_codigo('src/objetos/objetos4.html', 'objetos4.html');</script>
+</li>
+<li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String'>String</a>: Todas las cadenas de texto pertenecen a este tipo de objeto. Se puede, por ejemplo, ver la longitud de la cadena de texto:
+<code id='objetos5.html'></code>
+<script>insertar_codigo('src/objetos/objetos5.html', 'objetos5.html');</script>
+</li>
+</ul>
+</li>
+<li>Objetos del navegador: Sirven para manipular el navegador. Muchos de ellos son creados por Javascript de forma automática:
+<ul>
+<li><a href='https://developer.mozilla.org/en-US/docs/Web/API/Window'>Window</a>: Representa la ventana actual del navegador. Va a contener propiedades del navegador, como pueden ser la anchura y la altura de la ventana, se va a poder redimensionar, o incluso cerrar. Javascript crea por defecto el objeto window que representa a la ventana actual del navegador:
+<code id='objetos6.html'></code>
+<script>insertar_codigo('src/objetos/objetos6.html', 'objetos6.html');</script>
+</li>
+<li><a href='https://developer.mozilla.org/en-US/docs/Web/API/Document'>Document</a>: Representa el documento actual mostrado en el navegador. Podemos acceder a los elementos de una página web y cambiarlos. Javascript crea el objeto document que representa el documento actual:
+<code id='objetos7.html'></code>
+<script>insertar_codigo('src/objetos/objetos7.html', 'objetos7.html');</script>
+</li>
+</ul>
+</li>
+</ul>
+
 
 <script>
     post_pagina(titulo, id_pagina);

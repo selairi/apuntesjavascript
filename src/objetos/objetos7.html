@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<button id='boton'>Pulsa</button>
+<div id='Resultado'></div>
+
+<script>
+    // document.getElementById(nombre) devuelve la etiqueta con id='nombre'
+    var boton = document.getElementById('boton');
+    // onclick almacena la función que se va a ejecutar cuando se haga click sobre el botón
+    boton.onclick = function() {
+        var resultado = document.getElementById('Resultado');
+        var fecha = new Date();
+        resultado.innerHTML = "La fecha es: " + fecha;
+    }
+</script>

@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset='utf-8' />
+<script>
+    function Persona (edad) {
+        this.edad = edad;
+        this.nombre = "Pepe";
+        this.altura = 1.70;
+        this.peso = 70;
+        this.engordar = function (pesoGanado) {
+            this.peso += pesoGanado;
+        }
+    }
+
+    var pepe = new Persona(20);
+    var jose = pepe;
+    jose.engordar(10);
+    document.write(pepe.peso); 
+    
+    var a = 2;
+    var b = a;
+    b += 2;
+    document.write('a='+a);
+</script>
