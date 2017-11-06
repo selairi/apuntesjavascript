@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<script>
+    var i, j;
+    // Se define el array lista con 3 arrrays y cada array
+    // tiene 3 elementos:
+    var lista = 
+        [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ];
+    // Se recorren los elementos de lista:
+    for(i=0;i<lista.length;i++) {
+        for(j=0;j<lista[i].length;j++) {
+            document.write(lista[i][j] + ' ');
+        }
+        document.write('<br/>');
+    }
+</script>

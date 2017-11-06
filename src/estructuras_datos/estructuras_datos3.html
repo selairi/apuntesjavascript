@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<script>
+     var i, j, a = new Array();
+    // Se crea un array con 10 elementos que serán arrays
+    for(i=0;i<10;i++)
+        a[i] = new Array();
+    // Se puede acceder a cada elemento de cada subarray:
+    // El a[0] será el primer array, a[0][0] será el primer elemento del primer array:
+    a[0][0] = 1;
+    a[0][1] = 2;
+    // Se usarán bucles anidados para poder recorrerlos:
+    for(i=0;i<10;i++) {
+        for(j=0;j<10;j++) {
+            a[i][j] = i*j;
+        }
+    }
+    alert(a);
+</script>

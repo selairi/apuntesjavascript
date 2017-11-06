@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<script>
+    var a = new Array();
+    var i;
+    a[0] = 1;
+    a[1] = 2;
+    for(i=2;i<100;i++)
+        a[i] = a[i-1] + a[i-2];
+    // En el array se han almacenado la suma de los valores anteriores:
+    for(i=0;i<a.length;i++) {
+        document.write(a[i] + '<br/>');
+    }
+</script>

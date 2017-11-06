@@ -4,7 +4,8 @@ var paginas = [
     {url : 'variables.html', titulo : 'Variables', id : 'variables'},
     {url : 'control_flujo.html', titulo : 'Control de flujo', id : 'control_flujo'},
     {url : 'funciones.html', titulo : 'Funciones', id : 'funciones'},
-    {url : 'objetos.html', titulo : 'Objetos', id : 'objetos'}
+    {url : 'objetos.html', titulo : 'Objetos', id : 'objetos'}, 
+    {url : 'estructuras_datos.html', titulo : 'Estructuras de datos', id : 'estructuras_datos'}
 ];
 
 function pre_pagina(titulo, id)

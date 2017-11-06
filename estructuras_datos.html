@@ -1,0 +1,96 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Estructuras de datos';
+    var id_pagina = 'estructuras_datos';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Estructuras de datos</h1>
+
+<p>Los datos se pueden agrupar para formar diversas estructuras. Javascript da herramientas para trabajar con Arrays, listas, pilas, colas, mapas,...</p>
+
+<h1>Arrays</h1>
+
+<p>Un array son un conjunto de variables a las que podemos acceder usando un número que le hemos asignado a cada una. Por ejemplo:</p>
+
+<code><pre>
+    var a = new Array();
+    a[0] = 1;
+    a[1] = 2;
+    a[2] = a[1] + a[2];
+</pre></code>
+
+<p>Como se puede ver en el ejemplo, se puede declarar un array con "new Array()". Después podemos asignar valor usando la sintaxis:</p>
+<code><pre>
+    variable_array[índice]
+</pre></code>
+<p>Así se escribe a[0] para poder acceder al primer elemento del array, a[1] al segundo elemento,...</p>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'><p>En Javascript los arrays se comienzan a numerar desde 0.</p></div>
+
+<p>Para saber cuántos elementos hay en el array se usa la propiedad length:</p>
+<code id='estructuras_datos1.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos1.html', 'estructuras_datos1.html');</script>
+
+<p>Se suelen usar bucles para recorrer los contenidos de los arrays:</p>
+<code id='estructuras_datos2.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos2.html', 'estructuras_datos2.html');</script>
+
+<h2>Arrays multidimensionales</h2>
+
+<p>Los ejemplos anteriores trabajaban con arrays en una dimensión. Pero se puede insertar un array dentro de otro y se manejarán arrays en varias dimensiones:</p>
+<code id='estructuras_datos3.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos3.html', 'estructuras_datos3.html');</script>
+
+<p>En el ejemplo anterior se ha definido un array de dos dimensiones (necesitamos dos índices para recorrerlo). Se pueden definir arrays de 3, 4 ó más dimensiones.</p>
+
+<h2>Otra forma de definir arrays</h2>
+
+<p>Hasta ahora se han definido los arrays usando "new Array()". Se pueden definir arrays usando otras notaciones. Otra forma muy usada es utilizar corchetes [ ... ]. Por ejemplo:</p>
+
+<code id='estructuras_datos4.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos4.html', 'estructuras_datos4.html');</script>
+
+<p>Como se puede ver en el ejemplo, sólo hay que poner los elementos del array entre corchetes y separados por comas:</p>
+<code><pre>
+    [elemento0, elemento1, elemento2,...]
+</pre></code>
+
+<p>Dentro de los corchetes se pueden introducir elementos de cualquier tipo:</p>
+<code id='estructuras_datos5.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos5.html', 'estructuras_datos5.html');</script>
+
+<p>Se pueden introducir incluso otros arrays como se puede ver en el ejemplo anterior. Se pueden definir arrays multidimensionales de la siguiente forma:</p>
+<code id='estructuras_datos6.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos6.html', 'estructuras_datos6.html');</script>
+
+<h2>Métodos del objeto Array</h2>
+
+<p>En el siguiente enlace se pueden encontrar diversos métodos que se pueden usar con un array:</p>
+<p><a href='https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array'>https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array</a></p>
+
+<p>Entre los más útiles están sort() que ordena un array, indexOf(valor) que devuelve el índice del primer elemento que sea iguan a valor,... </p>
+
+<code id='estructuras_datos7.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos7.html', 'estructuras_datos7.html');</script>
+
+
+<h1>Colas</h1>
+
+<p>Con los arrays se pueden simular otras muchas estructuras de datos. </p>
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
