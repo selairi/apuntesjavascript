@@ -95,6 +95,75 @@
 
 <p>Otra estructura que se usa con frecuencia en la pila. Se puede simular como una pila de platos en los que se ponen unos encima de los otros. Para poder acceder al plato del fondo de la pila, hay que quitar, uno a uno, los platos que tiene encima. Para ello se usarán el método <strong>pop()</strong> que extrae el último elemento y <strong>push(valor</strong>) que añade el valor al final de la pila.</p>
 
+<code id='estructuras_datos9.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos9.html', 'estructuras_datos9.html');</script>
+
+<h1>Mapas</h1>
+
+<p>Un mapa consiste en buscar una variable por una etiqueta que se le ha asociado. La idea es similar al array, pero en lugar de asignar números a cada elemento, se le asigna una etiqueta. Para definir un mapa se igualará a unas llaves {}:</p>
+<code><pre>
+    var mapa = {};
+</pre></code>
+
+<p>Para asignar una etiqueta a un valor se usa una sintaxis muy similar a la de los arrays:</p>
+<code><pre>
+    mapa['etiqueta'] = valor;
+</pre></code>
+
+<p>Por ejemplo:</p>
+<code id='estructuras_datos10.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos10.html', 'estructuras_datos10.html');</script>
+
+<p>Otro ejemplo en el que se pueden consultar los teléfonos de varias personas:</p>
+<code id='estructuras_datos11.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos11.html', 'estructuras_datos11.html');</script>
+
+<p>En el caso de que tengamos que definir un mapa, una forma rápida es:</p>
+<code><pre>
+    var mapa = {
+        'etiqueta1' : valor1,
+        'etiqueta2' : valor2,
+        'etiquetan' : valorn
+    };
+</pre></code>
+
+<p>Por ejemplo:</p>
+<code id='estructuras_datos12.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos12.html', 'estructuras_datos12.html');</script>
+
+<h2>Usando mapas para definir objetos</h2>
+
+<p>Esta forma de definir mapas, puede servir para crear objetos. Se puede acceder a los elementos de la misma forma que se accede a los métodos o propiedades de los objetos:</p>
+<code><pre>
+    mapa = {
+        'etiqueta1' : valor1,
+        'etiqueta2' : valor2,
+        'etiquetan' : valorn
+    };
+    mapa.etiqueta1 = valor;
+</pre></code>
+
+<p>Por ejemplo:</p>
+
+<code id='estructuras_datos13.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos13.html', 'estructuras_datos13.html');</script>
+
+<p>Incluso se pueden definir métodos en los objetos:</p>
+
+<code id='estructuras_datos14.html'></code>
+<script>insertar_codigo('src/estructuras_datos/estructuras_datos14.html', 'estructuras_datos14.html');</script>
+
+<p>En el ejemplo anterior se puede apreciar que cuando se crean objetos usando mapas, se pueden eliminar las comillas de las etiquetas:</p>
+<code><pre>
+    mapa = {
+        etiqueta1 : valor1,
+        etiqueta2 : valor2,
+        etiquetan : valorn
+    };
+    mapa.etiqueta1 = valor;
+</pre></code>
+
+
 <script>
     post_pagina(titulo, id_pagina);
 </script>

@@ -38,15 +38,16 @@ function pre_pagina(titulo, id)
                 </h1>
               </div>
             </div>
-      
+            <div id='_indice'>
+            </div>
             <div>
     `);
 }
 
 function post_pagina(titulo, id)
 {
-    var enlaces = '', pos = -1;
-    for(var n=0; n<paginas.length; n++) {
+    var enlaces = '', pos = -1, n;
+    for(n=0; n<paginas.length; n++) {
         if(paginas[n].id == id) {
             if(n > 0)
                 enlaces += '<a href="'+paginas[n-1].url+'" class="w3-green w3-button">Anterior: '+paginas[n-1].titulo+'</a>';
@@ -61,6 +62,35 @@ function post_pagina(titulo, id)
             </div>
         </div>
     `);
+    
+    var sublista = 0, titulo, titulos = document.querySelectorAll('h1, h2');
+    enlaces = '<p>Índice de contenidos:</p><ul>';
+    for(n=1;n<titulos.length;n++) {
+        titulo = titulos[n];
+        if(titulo.id.length == 0)
+            titulo.id = '__' + n;
+        if(titulo.tagName == 'H1') {
+            while(sublista > 0) {
+                enlaces += '</ul>';
+                sublista--;
+            }
+            enlaces += '<li><a href="#' + titulo.id + '">' + titulo.textContent + '</a></li>';
+        } else if(titulo.tagName == 'H2') {
+            if(sublista == 0) {
+                enlaces += '<ul>';
+                sublista = 1;
+            } else while(sublista > 1) {
+                enlaces += '</ul>';
+                sublista--;
+            }
+            enlaces += '<li><a href="#' + titulo.id + '">' + titulo.textContent + '</a></li>';
+        }
+    }
+    while(sublista-- > 0) {
+        enlaces += '</ul>';
+    }
+    enlaces += '</ul>';
+    document.getElementById('_indice').innerHTML = enlaces;
 }
 
 function w3_open() {

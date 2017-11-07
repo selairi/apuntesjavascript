@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<script>
+    var contador = {
+                        n : 0,
+                        incrementar : function() {
+                            this.n += 1;
+                        },
+                        decrementar : function() {
+                            this.n -= 1;
+                        }
+                   };
+    document.write('Valor inicial de contador.n: ' + contador.n);
+    document.write('<br/>');
+    contador.incrementar();
+    document.write('Se ejecuta contador.incrementar(),  contador.n: ' + contador.n);
+    document.write('<br/>');
+    contador.decrementar();
+    document.write('Se ejecuta contador.decrementar(),  contador.n: ' + contador.n);
+</script>
