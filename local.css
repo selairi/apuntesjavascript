@@ -1,3 +1,7 @@
 pre {
     background-color: #dddddd;
 }
+
+code > pre {
+    overflow-x:auto;
+}
