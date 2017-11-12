@@ -5,3 +5,26 @@ pre {
 code > pre {
     overflow-x:auto;
 }
+
+body {
+    counter-reset: section;
+}
+
+h1 {
+    counter-reset: subsection;
+}
+
+.w3-container h1::before {
+    content: "";
+    counter-reset: section;
+}
+
+h1::before {
+    counter-increment: section;
+    content: counter(section) ". ";
+}
+
+h2::before {
+    counter-increment: subsection;
+    content: counter(section) "." counter(subsection) " ";
+} 

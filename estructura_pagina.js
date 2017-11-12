@@ -64,23 +64,23 @@ function post_pagina(titulo, id)
     `);
     
     var sublista = 0, titulo, titulos = document.querySelectorAll('h1, h2');
-    enlaces = '<p>Índice de contenidos:</p><ul>';
+    enlaces = '<p>Índice de contenidos:</p><ol>';
     for(n=1;n<titulos.length;n++) {
         titulo = titulos[n];
         if(titulo.id.length == 0)
             titulo.id = '__' + n;
         if(titulo.tagName == 'H1') {
             while(sublista > 0) {
-                enlaces += '</ul>';
+                enlaces += '</ol>';
                 sublista--;
             }
             enlaces += '<li><a href="#' + titulo.id + '">' + titulo.textContent + '</a></li>';
         } else if(titulo.tagName == 'H2') {
             if(sublista == 0) {
-                enlaces += '<ul>';
+                enlaces += '<ol>';
                 sublista = 1;
             } else while(sublista > 1) {
-                enlaces += '</ul>';
+                enlaces += '</ol>';
                 sublista--;
             }
             enlaces += '<li><a href="#' + titulo.id + '">' + titulo.textContent + '</a></li>';
