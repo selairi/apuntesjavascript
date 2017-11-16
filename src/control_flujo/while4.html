@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<script>
+    var x = 0;
+    while(x<10) {
+        document.write(x + '<br/>');
+        x++;
+        continue;
+        // Estas líneas no se llegan a ejecutar nunca:
+        document.write('Hola mundo');
+    }
+</script>
