@@ -3,6 +3,15 @@
     <meta charset='utf-8' />
     <link rel="stylesheet" href='w3.css' />
     <link rel="stylesheet" href='local.css' />
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+    
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
 </head>
 <body>
 
@@ -53,6 +62,69 @@
 <script>insertar_codigo('src/funciones/funciones2.html', 'funciones2.html');</script>
 
 <p>En el ejemplo anterior se puede ver la ventaja de las funciones, si modifico la función se modifica la salida de la función en todos los puntos en donde se la invoque.</p>
+
+<h2>onclick() y document.getElementById()</h2>
+
+<p>Se puede añadir la etiqueta onclick a las etiquetas de html. De esta forma cuando se haga click en alguna de ellas, se realizará una acción. Por ejemplo:</p>
+
+<code id='onclick1.html'></code>
+<script>insertar_codigo('src/funciones/onclick1.html', 'onclick1.html');</script>
+
+<p>Las páginas web pueden tener un alto dinamismo usando el método document.getElementById(). ¿Cómo funciona este método? Lo que se debe hacer es poner un identificador (id) a la etiqueta de html a la que se quiera acceder. Por ejemplo:</p>
+
+<code><pre>
+    &lt;div id='Pulsador'&gt;Botón &lt;/div&gt;
+    
+    &lt;script&gt;
+        var boton = document.getElementById("Pulsador");
+    &lt;/script&gt;
+</pre></code>
+
+<p>Una vez que se obtiene el elemento se puede manipular. Por ejemplo, con el atributo innerHTML se cambia el html que contiene una etiqueta:</p>
+
+<code id='getelement1.html'></code>
+<script>insertar_codigo('src/funciones/getelement1.html', 'getelement1.html');</script>
+
+<p>Si se mezclan onclick y document.getElementById():</p>
+
+<code id='getelement2.html'></code>
+<script>insertar_codigo('src/funciones/getelement2.html', 'getelement2.html');</script>
+
+<p>A parte de innerHTML se pueden cambiar o consultar más propiedades de las etiquetas HTML, pero por ahora sólo s:</p>
+
+<table>
+<tr>
+<td>innerHTML</td>
+<td>Cambia o consulta el contenido de una etiqueta</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Cambia o consulta las propiedades CSS de la etiqueta:
+<code><pre>
+    var x = document.getElementById("Pulsador");
+    x.style.color = 'white';
+    x.style.backgroundColor = "blue";
+    x.style.padding = "10px";
+</pre></code>
+
+<p>Como se puede apreciar las propiedades de CSS que tienen guiones, como por ejemplo "background-color", se debe eliminar el guión y poner la siguiente letra en mayúscula "backgroundColor".</p>
+
+<p>La lista completa de elementos de estilo que se pueden consultar en: <a href='https://www.w3schools.com/jsref/dom_obj_style.asp'>https://www.w3schools.com/jsref/dom_obj_style.asp</a></p>
+
+</td>
+<tr>
+<td>value</td>
+<td>Consulta o cambia el contenido de un campo de texto:
+
+
+<code id='getelement3.html'></code>
+<script>insertar_codigo('src/funciones/getelement3.html', 'getelement3.html');</script>
+
+</td>
+</tr>
+</tr>
+
+</table>
 
 <h2>Funciones con argumentos</h2>
 

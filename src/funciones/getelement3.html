@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<body>
+
+Nombre: <input type="text" id="entradaTexto" value="Pepe">
+
+<button onclick="consultar_nombre()">Pulsar</button>
+
+<p id='salida'>$0</p>
+
+<script>
+function consultar_nombre() {
+    var entradaTexto = document.getElementById("entradaTexto");
+    var salida = document.getElementById("salida");
+    salida.innerHTML = entradaTexto.value;
+    entradaTexto.value = ""; // Se limpia entradaTexto
+}
+</script>
+
+</body>
+</html>
