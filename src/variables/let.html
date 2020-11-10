@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<script>
+function ej() {
+    {
+        var i = 0;
+        let j = 1;
+    } // La variable j se destruye al llegar a este punto
+    console.log(i); // La variable i continua
+   // console.log(j); // Si se descomenta esta línea, se tendría un error
+}
+
+ej();
+// Ambas variables se destruyen fuera de una función
+//console.log(i);  // Si se descomenta esta línea, se tendría un error
+//console.log(j);  // Si se descomenta esta línea, se tendría un error
+
+</script>
+
+

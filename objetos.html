@@ -54,6 +54,24 @@
 <img src='imagenes/objetos/ram.svg'></img>
 <p>Pero para el caso de variables que no son objetos, como los números, javascript sí saca una copia, como se puede ver en las variables a y b. Al hacer b=a, javascript saca una copia de a y se la asigna a b por lo que a y b apuntan a regiones diferentes de la RAM. Por ello, al modificar b, no se modifica a.</p>
 
+<h1>Objetos y clases</h1>
+
+<p>Javascript es un lenguaje orientado a objetos, pero no dispone de clases. En otros lenguajes, como en Java, se puede crear una clase usando <strong>class</strong> y hacer herencia de la misma. En Javascript sólo se dispone del objeto, no se pueden crear "clases" como se haría en Java.</p>
+<p>Una característica de Javascript es que a los objetos se les pueden añadir propiedades y métodos nuevos. Es decir, si tengo un objeto se le pueden hacer cosas como:</p>
+<code id='objetos8.html'></code>
+<script>insertar_codigo('src/objetos/objetos8.html', 'objetos8.html');</script>
+<p>Como se puede ver en el ejemplo, al objeto "a" se le han añadido la propiedad "longitud" y el método "contarLongitud", que no existen en la clase String. Al crear el objeto "b", este tiene todas las propiedades y métodos de la clase String, pero no cuenta con la propiedad "longitud" ni el método "contarLongitud", ya que "longitud" y "contarLongitud" hay que añadirlos manualmente.</p>
+
+<div class="w3-panel w3-leftbar w3-sand w3-serif">En general de los lenguajes interpretados (Javascript, Python,...) manejan los objetos de forma similar a como lo hace Javascript. Una vez creado el objeto permiten añadir propiedades y métodos nuevos al objeto. </div>
+
+<p>La forma simular clases en Javascript que se ha explicado en los aparados anteriores consiste en crear el objeto this y añadir lo que se necesita para la clase.</p>
+
+<p>La herencia como tal no existe en Javascript, pero se puede simular creando un objeto de la clase padre y añadiendo los métodos y propiedades de la clase hija.</p>
+
+<p>Si se estudia el código de los diversos proyectos disponibles en Javascript, se encontrará que, al no haber definido un mecanismo para la herencia en el lenguaje, se usan métodos de lo más diversos.</p>
+
+<div class="w3-panel w3-leftbar w3-sand w3-serif">En este apartado se ha visto una forma de crear clases bastante didáctica. En la práctica las clases se crearán usando estructuras de datos. Ésto se verá en el tema siguiente. Serán archivos muy similares al lenguaje JSON.</div>
+
 <h1>Objetos del navegador</h1>
 
 <p>Los navegadores definen sus propios objetos, con lo que se va a disponer de un arsenal de objetos ya preparados para realizar algunas acciones. En el siguiente enlace se encuentra una guía rápida para ver los objetos y sus métodos:</p>

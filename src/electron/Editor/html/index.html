@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Editor</title>
+        <meta charset="utf-8">
+        <!-- Electron Security Policy -->
+        <!-- <meta http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src * " > -->
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <ul class='menu'>
+            <li onclick='abrir();'>Abrir</li>
+            <li onclick='guardar();'>Guardar</li>
+        </ul>
+        <br/>
+        <textarea id='texto'></textarea>
+        <script src="../app/renderer.js"></script>
+	</body>
+</html>
+
+

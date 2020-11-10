@@ -7,7 +7,7 @@
     table {
         border-collapse: collapse;
     }
-    
+
     table, th, td {
         border: 1px solid black;
     }
@@ -70,11 +70,13 @@
 <code id='onclick1.html'></code>
 <script>insertar_codigo('src/funciones/onclick1.html', 'onclick1.html');</script>
 
+<div class="w3-panel w3-leftbar w3-sand w3-serif">Existe otra forma de capturar los eventos onclick, escuchando los eventos. De esta forma se pueden asignar varias funciones al mismo evento. Esta suele ser la forma de capturar eventos en la web. Se deja como ejercicio buscar cuál es este procedimiento y cuáles son los eventos que se pueden escuchar.</div>
+
 <p>Las páginas web pueden tener un alto dinamismo usando el método document.getElementById(). ¿Cómo funciona este método? Lo que se debe hacer es poner un identificador (id) a la etiqueta de html a la que se quiera acceder. Por ejemplo:</p>
 
 <code><pre>
     &lt;div id='Pulsador'&gt;Botón &lt;/div&gt;
-    
+
     &lt;script&gt;
         var boton = document.getElementById("Pulsador");
     &lt;/script&gt;
@@ -90,7 +92,7 @@
 <code id='getelement2.html'></code>
 <script>insertar_codigo('src/funciones/getelement2.html', 'getelement2.html');</script>
 
-<p>A parte de innerHTML se pueden cambiar o consultar más propiedades de las etiquetas HTML, pero por ahora sólo s:</p>
+<p>A parte de innerHTML se pueden cambiar o consultar más propiedades de las etiquetas HTML, pero por cuestión de tiempo sólo se verán las siguientes:</p>
 
 <table>
 <tr>
@@ -175,11 +177,11 @@
     function iva(precio) {
         return precio*1.21;
     }
-    
+
     var a_pagar = 0;
     a_pagar += iva(100);
     a_pagar += iva(20);
-    
+
     document.write("El total a pagar es: " + a_pagar);
 </pre></code>
 
@@ -232,6 +234,15 @@
 <p>Se puede, incluso, definir la función cuando se pasa como argumento de otra función:</p>
 <code id='funciones12.html'></code>
 <script>insertar_codigo('src/funciones/funciones12.html', 'funciones12.html');</script>
+
+<p>Otra forma de definir funciones como variables es con la siguiente sintaxis:</p>
+<code>(argumentos) =&gt; {código de la función}</code>
+
+<p>Por ejemplo, se ha definido la función calcularIVA en el siguiente ejemplo:</p>
+<code id='funciones13.html'></code>
+<script>insertar_codigo('src/funciones/funciones13.html', 'funciones13.html');</script>
+
+<p>Las funciones como variables se suelen usar mucho para tratar eventos o definir objetos en Javascript.</p>
 
 <script>
     post_pagina(titulo, id_pagina);

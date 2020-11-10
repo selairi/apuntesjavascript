@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset='utf-8' />
+
+<script>
+    // Se crea el objeto "a" de la clase String
+    var a = new String("Hola mundo");
+    // Se le añade una propiedad que no tiene la clase String
+    a.longitud = 10;
+    // Ahora se le añade un nuevo método:
+    a.contarLongitud = function () {
+        this.longitud = this.length + 10; // Como es un método de la clase, se puede usar this
+        return this.longitud;
+    }
+
+    document.write( a.contarLongitud() );
+
+    // Se crea el objeto "b" de la clase String
+    var b = new String();
+    // Este objeto no tiene la propiedad longitud ni contarLongitud.
+    // La siguiente línea generaría un error:
+    // b.contarLongitud();
+
+</script>

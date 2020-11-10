@@ -1,0 +1,254 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Electron';
+    var id_pagina = 'electron';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Electron</h1>
+
+<p>Electron es un módulo "Node.js" instalable con el comando:</p>
+
+<pre>$ npm install electron</pre>
+
+<p>Electron consiste en un navegador web (de hecho es Chromium) adaptado para crear aplicaciones de escritorio. Con un navegador web normal como Firefox o Chrome no es posible hacer ciertas tareas que realizan las aplicaciones de escritorio, como puede ser escanear el disco duro en busca de archivos o ejecutar comandos. Con electron se pueden ejecutar módulos de "Node.js" sin problemas.</p>
+
+<p>¿Qué aplicaciones están escritas con Electron? Se tiene Microsoft Visual Studio, Atom, Jitsi Desktop, Skype, Terminus,... En general se usará en proyectos en los que se quiera llevar una página web al escritorio. Además es multiplataforma soportando Windows, Linux y MacOS. En la siguiente página se puede ver una lista de proyectos que usan electron:</p>
+
+<a href='https://www.electronjs.org/apps'>https://www.electronjs.org/apps</a>
+
+<p>Se puede encontrar más información sobre electron en:</p>
+
+<a href='https://www.electronjs.org'>https://www.electronjs.org</a>
+
+<h1>¿Cómo funciona?</h1>
+
+<p>En una página web normal, se tiene un cliente, por ejemplo Firefox, que carga la página, el usuario interacciona con la página y fruto de esa interacción se hacen peticiones desde el cliente web al servidor web, usando el protocolo HTTP.</p>
+
+<p>El funcionamiento de Electron será muy similar. En lugar de un servidor y un cliente se tendrá un proceso principal, al que llamaremos "main.js" por comodidad y un proceso cliente, al que llamaremos renderer, que se estará ejecutando en el navegador. El proceso "main.js" tendrá acceso a todo la funcionalidad de "Node.js" y puede interactuar con el sistema operativo. El proceso renderer se ejecuta en el navegador y no puede interactuar con el sistema operativo, pero es capaz de interactuar con el navegador.</p>
+
+<p>Electron es muy amplio y toda su funcionalidad se escapa a este texto. Se simplificará mucho haciendo que los procesos "main.js" y renderer se ejecuten mandando mensajes entre ellos. Por ejemplo, si renderer necesita obtener un listado de los archivos en el disco duro, mandará un mensaje a "main.js". Este mensaje puede tener nombre, supongamos que tiene el nombre "ls". "main.js" ejecutará una función asociada al evento "ls" (hay que indicar para cada mensaje que se quiera usar en la aplicación la función que se ejecutará). Una vez recopilados los archivos del disco duro, "main.js" manda un mensaje, que se puede llamar "respuesta-ls", con los archivos a renderer. Al igual que "main.js", rederer deberá tener asociada una función al mensaje "respuesta-ls".</p>
+
+<p>Es decir, los mensajes deben tener nombre, cada mensaje debe tener una función en renderer y "main.js" que se ejecutará cuando se reciba dicho mensaje. Como ya se habrá deducido, al mandar un mensaje, se le pueden pasar variables que serán pasadas como argumentos a las funciones que procesen el mensaje.</p>
+
+<p>Este mecanismo de paso de mensajes se hará en electron a través de un módulo de IPC (Inter Process Comunication).</p>
+
+
+<h1>Un ejemplo básico</h1>
+
+<p>El ejemplo se puede descargar desde el siguiente enlace:</p>
+<a href='src/electron/Proyecto-Basico-Electron.tar.gz'>src/electron/Proyecto-Basico-Electron.tar.gz</a>
+
+
+<p>Este ejemplo constará de los archivos:</p>
+
+<ul>
+<li>main.js: Será el proceso principal que podrá interactuar con el sistema operativo y con "Node.js".</li>
+<li>renderer.js: Será el proceso que se ejecutará en el navegador e interactúa con el navegador.</li>
+<li>index.html: Es la página web que mostrará el navegador.</li>
+<li>style.css: Hoja de estilo.</li>
+<li>preload.js: Va a permitir compartir un objeto IPC con el rendere.js para poder enviar y recibir mensajes.</li>
+</ul>
+
+<p>El ejemplo simplemente será una página web con un botón y un cuadro de texto, cuando el usuario pulse el botón, se enviará un mensaje a "main.js" con el texto de cuadro de texto. "main.js" guardará un archivo en disco con el texto y devolverá un mensaje de respuesta indicando a "renderer.js" si el archivo ha sido almacenado correctamente. "renderer.js" mostrará un mensaje alert en el navegador con la respuesta de "main.js".</p>
+
+<p>El programador puede decidir el nombre de los mensajes que se van a enviar entre "main.js" y "renderer.js" y las variables que se van a pasar. En este caso los mensajes y sus variables serán:</p>
+<ul>
+<li>Mensaje "guardar". Se envía de "renderer.js" a "main.js". Se envía sólo un argumento:
+    <ul><li>texto (String): Es el texto que se va a guardar en el archivo.</li></ul>
+</li>
+<li>Mensaje "resultado". Se envía de "main.js" a "renderer.js". Se envían los argumentos:
+    <ul>
+    <li>respuesta (String): Es un texto indicando si el archivo ha sido almacenado correctamente o no.</li>
+    <li>error (Boolean): Es un booleano indicando si ha habido algún error al escribir el archivo en disco.</li>
+    </ul>
+</li>
+</ul>
+
+<p>Para tener todo ordenado, se crearán las carpetas app (en ella se almacenarán los javascript), html y css:</p>
+<pre>$ mkdir app html css</pre>
+
+<p>El archivo "html/index.html", tendrá los siguientes contenidos:</p>
+
+<code id='index.html'></code>
+<script>insertar_codigo('src/electron/Proyecto-Basico-Electron/html/index.html', 'index.html');</script>
+
+<p>Como se puede ver tiene comentado la política de seguridad de la página. Por lo demás sólo tiene un textarea, que contendrá el texto a escribir y un elemento li que ejecuta la función "enviar()" cuando es pulsado. Al elemento li le dará aspecto de botón con el siguiente CSS, que se colocará en "css/style.css":</p>
+
+<code id='style.css'></code>
+<script>insertar_codigo('src/electron/Proyecto-Basico-Electron/css/style.css', 'style.css');</script>
+
+<p>Se va a estudiar ahora el archivo "app/renderer.js":</p>
+
+<code id='renderer.js'></code>
+<script>insertar_codigo('src/electron/Proyecto-Basico-Electron/app/renderer.js', 'renderer.js');</script>
+
+<p>La función enviar() tiene las siguientes líneas interesantes:</p>
+
+<pre>var texto = document.getElementById('texto').value;</pre>
+
+<p>En esta línea se toma el texto escrito en el textarea.</p>
+
+<p>Con la siguiente línea se envía el mensaje "guardar" a "main.js" con el texto que se deberá guardar el en archivo:</p>
+
+<pre>window.ipcRendererer.send('guardar', texto);</pre>
+
+<p>Aquí está disponible el primer método útil para el envío de mensajes entre "renderer.js" y "main.js", el método "ipcRendererer.send()". Su sintaxis es:</p>
+
+<pre>window.ipcRendererer.send("nombre del mensaje", argumento1, argumento2, ...)</pre>
+
+<p>Se puede poner el nombre al mensaje que se desee y usar tantos argumentos como sean necesarios. Por ejemplo, si se quisiera mandar el mensaje "sumar" con los argumentos 2, 4 y 6:</p>
+
+<pre>window.ipcRendererer.send("sumar", 2, 4, 6);</pre>
+
+<p>Para capturar mensajes desde el método "main.js" al método "renderer.js" se usará el método:</p>
+
+<pre>window.ipcRendererer.on('nombre del mensaje', callback);</pre>
+
+<p>donde callback es una función que deberá tener los siguientes argumentos:</p>
+
+<ul>
+<li>event: Objeto con información del evento.</li>
+<li>argumento1, argumento2,... : tantos argumentos como los que se necesitaron para enviar el mensaje.</li>
+</ul>
+
+<p>En "main.js" se tendrán los métodos equivalentes para recibir y enviar mensajes:</p>
+<ul>
+<li>ipcMain.on("nombre del mensaje", callback): Se usará para recibir los mensajes de "renderer.js".</li>
+<li>mainWindow.webContents.send('nombre del mensaje', argumento1, argumento2,...): Se usará para enviar mensajes desde "main.js" a "renderer.js".</li>
+</ul>
+
+<p>El archivo "app/main.js" tiene un poco más de contenido, pues debe crear la aplicación, crear la ventana del navegador, cargar el "index.html" en el navegador, ejecutar el archivo "preload.js" para compartir los mensajes con "renderer.js", capturar los mensajes de "renderer.js" y contestarle. El código está comentado y se puede entender el funcionamiento general de la aplicación.</p>
+
+<p>Archivo "app/main.js":</p>
+<code id='main.js'></code>
+<script>insertar_codigo('src/electron/Proyecto-Basico-Electron/app/main.js', 'main.js');</script>
+
+<p>Como se puede ver se usan los métodos "ipcMain.on()" y "mainWindow.webContents.send()" para recibir y enviar mensajes a "renderer.js".</p>
+
+<p>Queda un último archivo "app/preload.js" que sólo tiene una línea:</p>
+
+<code id='preload.js'></code>
+<script>insertar_codigo('src/electron/Proyecto-Basico-Electron/app/preload.js', 'preload.js');</script>
+
+<p>Como ya se dijo este archivo se usará para compartir el objeto ipcRenderer con "renderer.js" y poder enviar y recibir mensajes.</p>
+
+
+<p>Para ejecutar la aplicación se escribirá en la línea de comandos:</p>
+
+<pre>$ electron app/main.js</pre>
+
+<p>El proyecto se puede completar añadiendo una archivo "package.json":</p>
+
+<code id='package.json'></code>
+<script>insertar_codigo('src/electron/Proyecto-Basico-Electron/package.json', 'package.json');</script>
+
+
+<h1>Cuadros de diálogo de abrir y guardar archivos</h1>
+
+<p>Electron permite que desde "main.js" se puedan abrir cuadros de diálogo para que el usuario pueda elegir dónde abrir o guardar archivos:</p>
+
+<img src='imagenes/electron/abrirdialog.png'></img>
+
+<p>Para ello se usará el módulo dialog. El archivo "main.js" se modificará de la siguiente forma:</p>
+
+<pre>
+const electron = require('electron');
+const app = electron.app;  // Modulo que controla la vida de la aplicación
+const BrowserWindow = electron.BrowserWindow;  // Modulo para crear la ventana del navegador
+// Se añade el módulo dialog:
+<strong>const dialog = electron.dialog; // Módulo para crear ventanas de diálogo</strong>
+
+...
+
+// Se añade el cuadro de diálogo de guardar:
+ipcMain.on("guardar", async (event, texto) => {
+    const archivo = await dialog.showSaveDialog(mainWindow, {
+        properties: ['openFile'],
+        title: 'Guardar',
+        filters: [ { name: 'Text Files', extensions: ['txt'] }, { name: 'All', extensions: ['*'] } ]
+    });
+    console.log(archivo);
+    // Se comprueba que el usuario no ha pulsado el botón cancelar
+    if(!archivo.canceled) {
+        fs.writeFile(archivo.filePath, texto, 'utf-8' ,(err) => {
+            if (err)
+                // Si hay un error en la escritura, se comunica a "renderer.js"
+                mainWindow.webContents.send('resultado', err.toString(), true);
+            else {
+                // El archivo se ha guardado correctamente
+                mainWindow.webContents.send('resultado', "El archivo se ha guardado correctamente", false);
+            }
+        });
+    }
+});
+</pre>
+
+<p>Como se puede ver se usa el método "dialog.showSaveDialog(BrowserWindow, opciones)" para abrir un cuadro de diálogo de guardar. Se le deben pasar como argumentos la ventana del navegador (la ventana queda bloqueada hasta que el usuario haya seleccionado el archivo). Las opciones se deben consultar en la API de Electron, pero las que se han incluido en el ejemplo son las más básicas. Con filters, se indican los tipos de archivos que se mostrarán en el cuadro de diálogo.</p>
+
+<p>Los filtros permiten que el usuario sólo pueda abrir o guardar archivos con determinadas extensiones. Por ejemplo, cuando se abre un archivo usando LibreOffice, el cuadro de diálogo muestra sólo las extensiones permitidas por LibreOffice (odt, ods, doc, docx, ...).</p>
+
+<p>Como se puede ver "dialog.showSaveDialog" devuelve un objeto Promise, que en el ejemplo se evita la ejecución asíncrona usando await.</p>
+
+<p>Se podría modificar el ejemplo para que se pueda también seleccionar el archivo para abrir. Para ello en "main.js" se añadiría la captura de un nuevo mensaje, "abrir":</p>
+
+<pre>
+ipcMain.on("abrir", async (event) => {
+    const archivos = await dialog.showOpenDialog(mainWindow, {
+        properties: ['openFile'],
+        title: 'Abrir',
+        filters: [ { name: 'Text Files', extensions: ['txt'] }, { name: 'All', extensions: ['*'] } ]
+    });
+    console.log(archivos);
+    // Se comprueba que el usuario no ha pulsado el botón cancelar
+    if(!archivos.canceled) {
+        fs.readFile(archivos.filePaths[0], 'utf-8' ,(err, texto) => {
+            if (err)
+                // Si hay un error en la lectura, se comunica a "renderer.js"
+                mainWindow.webContents.send('resultado', err.toString(), true);
+            else {
+                // El archivo se ha leído correctamente
+                mainWindow.webContents.send('archivo', texto);
+            }
+        });
+    }
+});
+</pre>
+
+<p>Como se puede ver, para abrir archivos se usará "dialog.showOpenDialog(BrowserWindow, opciones)" que funciona de forma muy similar a "dialog.showSaveDialog". La diferencia principal es que "dialog.showSaveDialog" sólo devuelve un archivo, pero "dialog.showOpenDialog" devuelve un array, ya que, con las opciones adecuadas en "dialog.showOpenDialog" el usuario puede seleccionar múltiples archivos. Con las opciones del ejemplo, sólo se puede seleccionar uno y por ello sólo se toma el primer elemento del array (archivos.filePaths[0]).</p>
+
+<p>Desde el siguiente enlace se puede descargar el ejemplo completo:</p>
+
+<a href='src/electron/Editor.tar.gz'>src/electron/Editor.tar.gz</a>
+
+<h1>Menús</h1>
+
+<p>Electron también permite crear una barra de menú e insertar los típicos menús de Archivo, Editar, Ayuda,... Su uso escapa de las características de estos apuntes, pero el la siguiente plantilla hay un ejemplo de "Editor de Texto" que usa menús. En el archivo "main.js" se tiene información de cómo crear dicho menú:</p>
+
+<a href='src/electron/Menus.tar.gz'>src/electron/Menus.tar.gz</a>
+
+
+
+<h1>¿Dónde continuar?</h1>
+
+<p>Esta ha sido una pequeña introducción a Electron. Con lo que se ha visto, usando los módulos de "Node.js", se pueden hacer muchos proyectos interesantes. Electron también permite crear menús, menús de contexto, colocar iconos en la bandeja del sistema, abrir múltiples ventanas,... Se recomienda leer los tutoriales disponibles en la página web de electron:</p>
+
+<a href='https://www.electronjs.org'>https://www.electronjs.org</a>
+
+<p>Otro módulo interesante es "electron-packager" (<a href='https://github.com/electron-userland/electron-packager'>https://github.com/electron-userland/electron-packager</a>) que permite crear ejecutables a partir de proyectos de electron para Windows, Linux y OS X.</p>
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>

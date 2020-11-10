@@ -1,0 +1,508 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Node.js';
+    var id_pagina = 'nodejs';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Node.js</h1>
+
+<p>Javascript tiene una fuerte presencia en los navegadores. A alguien se le ocurrió la idea de tomar el motor de Javascript del navegador web Chromium y hacer de él un lenguaje que se pudiese ejecutar localmente. De ahí se origina "Node.js" (se suele quitar el punto cuando se escribe el nombre del proyecto Nodejs).</p>
+
+<p>Ya hubo intentos de hacer de Javascript un lenguale del lado del servidor, como Rhino, pero es "Node.js" el que mñas éxito ha tenido, contando con un repositorio de bibliotecas de lo más extensa.</p>
+
+<h1>Instalación</h1>
+
+<p>Para instalar Node.js simplemente se va a la página web de descarga de Node.js y de descarga la versión correspondiente a nuestro sistema operativo:</p>
+
+<p><a href='https://nodejs.org'>https://nodejs.org</a></p>
+
+<p>Para instalarlo en sistemas Linux - Unix no es necesario tener permisos de usuario root. Simplemente se descarga y se descomprime el proyecto en la carpeta que se desee. Generará un árbol de directorios similar a:</p>
+
+<ul>
+<li>/bin</li>
+<li>/include</li>
+<li>/lib</li>
+<li>/share</li>
+</ul>
+
+</p>Para poder ejecutar "Node.js" sin problemas, es conveniente introducirlo en la variable de entorno $PATH de nuestro sistema operativo. En Linux - Unix, esto se puede realizar modificando el archivo oculto ".bashrc". Para ello en un terminal se ejecuta:</p>
+
+<pre>
+$ nano .bashrc
+</pre>
+
+<p>Al final del archivo se añade la siguiente línea.</p>
+
+<pre>
+export PATH=$PATH:<strong>ruta a la carpeta de "Node.js"</strong>/bin
+export NODE_PATH=<strong>ruta a la carpeta de "Node.js"/lib/node_modules</strong>
+</pre>
+
+<h1>El intérprete de comandos</h1>
+
+<p>Al ser concebido como un lenguaje de script, se dispone de un intérprete de comandos. Sólo hay que ejecutar en un terminal el comando:</p>
+
+<pre>
+$ node
+</pre>
+
+<p>Para salir del intérprete se escribirá:</p>
+
+<pre>
+.exit
+</pre>
+
+<p>Desde este intérprete se tiene la opción de autocompletar usando el tabulador. Por ejemplo, se crea un objeto String:</p>
+
+<pre>
+Welcome to Node.js v12.18.3.
+Type ".help" for more information.
+> var a= new String();
+undefined
+</pre>
+
+<p>Al ejecutar "var a= new String();", "Node.js" responde "undefined", pues este comando no devuelve una respuesta que "Node.js" pueda mostrar por el terminal.</p>
+
+<p>Si se escribe "a." y se pulsa el tabulador un par de veces, nos mostrará los métodos y propiedades del objeto a:</p>
+
+<pre>
+> a.
+a.__defineGetter__      a.__defineSetter__      a.__lookupGetter__      a.__lookupSetter__      a.__proto__             a.hasOwnProperty
+a.isPrototypeOf         a.propertyIsEnumerable  a.toLocaleString
+
+a.anchor                a.big                   a.blink                 a.bold                  a.charAt                a.charCodeAt
+a.codePointAt           a.concat                a.constructor           a.endsWith              a.fixed                 a.fontcolor
+a.fontsize              a.includes              a.indexOf               a.italics               a.lastIndexOf           a.link
+a.localeCompare         a.match                 a.matchAll              a.normalize             a.padEnd                a.padStart
+a.repeat                a.replace               a.search                a.slice                 a.small                 a.split
+a.startsWith            a.strike                a.sub                   a.substr                a.substring             a.sup
+a.toLocaleLowerCase     a.toLocaleUpperCase     a.toLowerCase           a.toString              a.toUpperCase           a.trim
+a.trimEnd               a.trimLeft              a.trimRight             a.trimStart             a.valueOf
+
+a.length
+</pre>
+
+<p>Esto será útil para explorar los contenidos de un objeto dado.</p>
+
+<h1>Ejecutando un archivo</h1>
+
+<p>Lo más habitual, para trabajar con "Node.js", será escribir un archivo con los comandos que se necesiten y después ejecutarlo desde línea de comandos con:</p>
+
+<pre>$ node archivo.js</pre>
+
+<p>Por ejemplo, si se escribe en el archivo "hola.js":</p>
+
+<pre>
+console.log('Hola mundo');
+</pre>
+
+<p>y se ejecuta, se escribirá en el terminal:</p>
+
+<pre>Hola mundo</pre>
+
+<p>El método "console.log()" se usará para escribir en la salida estándar.</p>
+
+
+<h1>require</h1>
+
+<p>En "Node.js" se dispone de "require", que es similar el import de Java o al #include de C. Permite cargar los métodos y variables que se exporten desde un archivo. A los archivos que tengan contenidos que se puedan importar desde otros, se llamarán módulos. Por ejemplo, se tiene el siguiente archivo llamado "mates.js":</p>
+
+<code id='mates.js'></code>
+<script>insertar_codigo('src/nodejs/mates.js', 'mates.js');</script>
+
+<p>Con exports se indican los métodos y variables que se desean exportar.</p>
+
+<p>Ahora si se inicia una sesión del intérprete de comandos:</p>
+
+<pre>$ node</pre>
+
+<p>y se ejecuta el comando require de la siguiente forma:</p>
+
+<pre>
+const mates = require('./mates');
+</pre>
+
+<p>Se habrá importado el módulo "mates.js". Hay que fijarse que en el argumento de require hay que indicar la ruta al archivo sin la extensión.  Lo habitual es crear una constante, const, con el módulo cargado. El nombre del módulo debe coincidir con el de la constate (aunque se le podría poner otro nombre a la constante).</p>
+
+<p>Si ahora se escribe "mates." en el intérprete de comandos y se pulsa el tabulador un par de veces:</p>
+
+<pre>
+Welcome to Node.js v12.18.3.
+Type ".help" for more information.
+> const mates = require('./mates');
+undefined
+> mates.
+mates.__defineGetter__      mates.__defineSetter__      mates.__lookupGetter__      mates.__lookupSetter__      mates.__proto__
+mates.constructor           mates.hasOwnProperty        mates.isPrototypeOf         mates.propertyIsEnumerable  mates.toLocaleString
+mates.toString              mates.valueOf
+
+<strong>mates.PI                    mates.resta                 mates.suma</strong>
+
+</pre>
+
+<p>Se puede ver que se han importado los métodos del módulo mates. Se pueden invocar y trabajar con ellos:</p>
+
+<pre>
+> console.log(mates.PI + mates.suma(2,3));
+8.14159
+</pre>
+
+<p>De la misma forma que se importan módulos desde la línea de comandos, se pueden importar desde un archivo. Por ejemplo, sea el archivo "calculos.js":</p>
+
+<code id='calculos.js'></code>
+<script>insertar_codigo('src/nodejs/calculos.js', 'calculos.js');</script>
+
+<p>Se podrá ejecutar desde la línea de comandos con:</p>
+
+<pre>
+$ node calculos.js
+</pre>
+
+<p>Se recomienda consultar la API de "Node.js" para hacerse una idea de los módulos que vienen incluidos por defecto:</p>
+
+<p><a href='https://nodejs.org/docs/latest-v12.x/api/all.html'>https://nodejs.org/docs/latest-v12.x/api/all.html</a></p>
+
+<h1>Ejecución síncrona y asíncrona</h1>
+
+<p>"Node.js" no facilita el trabajo con hilos y procesos. Javascript en el navegador no tiene hilos. Si estuviésemos escribiendo un servidor de páginas web, correríamos el peligro de que una página se quedase bloqueada hasta que no se haya servidor la anterior. Para evitar este problema y poder hacer ejecución de múltiples tareas, se usará la ejecución asíncrona. Básicamente se solicitará a "Node.js" hacer una tarea y se le pasará una función. "Node.js" ejecutará la función cuando el recurso esté disponible.</p>
+
+<p>Por lo tanto se tendrán dos formas de realizar la ejecución:</p>
+<ul>
+<li>Síncrona: Es la ejecución normal de un script. Cada línea de código se ejecuta una tras otra.</li>
+<li>Asíncrona: Se solicita la ejecución de una función y "Node.js" la ejecutará cuando el recurso esté disponible o se genere algún evento.</li>
+</ul>
+
+<p>Para verlo se trabajará con el módulo fs de "Node.js". El módulo fs permite leer o escribir archivos en el disco o leer los contenidos de un directorio (similar al comando ls de Linux). Para más información sobre el módulo fs, se puede consultar la documentación de "Node.js":</p>
+
+<p><a href='https://nodejs.org/download/docs/v12.18.3/api/fs.html'>https://nodejs.org/download/docs/v12.18.3/api/fs.html</a></p>
+
+<p>Viendo la documentación del módulo se dispone del método "fs.readFileSync(path[, options])" este método lee un archivo y nos devuelve el contenido en forma de texto (si se le indica una codificación, "uft-8"), la ejecución del programa se interrumpe hasta que no se haya leído el archivo. Se le debe pasar como parámetro la ruta, path, del archivo y la codificación. Por ejemplo si se ejecuta lo siguiente en el intérprete de comandos:</p>
+
+<pre>
+const fs = require('fs');
+console.log('Se lee el archivo mates.js');
+var texto = fs.readFileSync('mates.js', 'utf-8');
+// La variable "texto" es un String con los contenidos del archivo
+console.log(texto);
+console.log('Fin de la lectura del archivo');
+</pre>
+
+<p>Mostrarán por pantalla los contenidos del archivo "mates.js".</p>
+
+<p>En todo momento la ejecución del archivo ha sido síncrona. Por lo que primero se muestra el texto "Se lee el archivo...", después el texto del archivo, y por último "Fin de la lectura del archivo".</p>
+
+<p>El módulo fs de "Node.js" también dispone del método "fs.readFile(path[, options], callback)" que hace una lectura aśincrona del archivo. Se le debe pasar la ruta del archivo, path, la codificación y una función, callback, que se ejecutará cuando los contenidos del archivo estén disponibles. La función callback tendrá dos argumentos err (indica si ha habido algún error en la lectura) y data (contenidos del archivo).</p>
+
+<code id='lecturaasincrona.js'></code>
+<script>insertar_codigo('src/nodejs/lecturaasincrona.js', 'lecturaasincrona.js');</script>
+
+<p>Si la ejecución del archivo hubiese sido síncrona, se mostraría primero el mensaje "Se lee el archivo...", después el contenido del archivo y finalmente "Fin de la lectura del archivo".</p>
+<p>Al ser asíncrona, primero se muestra el mensaje "Se lee el archivo...", después se hace la solicitud de lectura asíncrona del archivo, por lo que se le pasa la función que se ejecutará cuando el archivo esté disponible. Ahora, en función del estado del disco, del sistema operativo,... puede que se muestre primero el mensaje "¿Fin de la lectura del archivo?" y después el texto del archivo o viceversa.</p>
+
+<p>La ventaja de la lectura asíncrona es que la ejecución del programa no se bloquea porque se tenga que leer el archivo, el script sigue ejecutándose. Esto es útil a la hora de escribir servidores, pues se podrán lanzar varias tareas que se ejecutarán según los recursos vayan estando disponibles.</p>
+
+<p>De forma análoga, el módulo fs dispone de escritura de archivos síncrona y asíncrona:</p>
+<code id='escritura.js'></code>
+<script>insertar_codigo('src/nodejs/escritura.js', 'escritura.js');</script>
+
+
+<h2>Promise</h2>
+
+<p>Algunas funciones de ejecución asíncrona devuelven un objeto Promise. Una vez que se tiene el objeto Promise, se indica la función que se debe de ejecutar de forma asíncrona usando el método then:</p>
+
+<pre>
+var p = dirA.read(); // Se devuelve un objeto Promise
+p<strong>.then</strong>( (e) => {console.log(e.name)} ); // Se indica la función a ejecutar de forma asíncrona con then
+</pre>
+
+<p>Aunque lo habitual es encadenar las peticiones:</p>
+<pre>
+dirA.read().then( (e) => {console.log(e.name)} );
+</pre>
+
+<p>Para ver un ejemplo real de Promise, se va a ver la forma que tiene el módulo fs de leer los contenidos de los directorios. El comando ls de Linux permite ver los contenidos de una carpeta. El módulo fs posee un mecanismo para leer los contenidos de un directorio mediante "fs.opendirSync(path[, options])" donde path es la ruta de la carpeta. options es un parámetro opcional que habitualmente se usará para indicar la codificación. Esta función devuelve un objeto del tipo fs.Dir que representa el directorio.</p>
+
+<p>Se estudia primero la forma síncrona:</p>
+<p>Para trabajar con opendirSync, primero se abre el directorio con opendirSync y después se van leyendo una a una las entradas con el método "fs.Dir.readSync()". El método "fs.Dir.readSync()" devuelve null si no hay mas contenidos en la carpeta (se ha leído todo) o un objeto "fs.Dirent" que representa al archivo. El objeto "fs.Dirent" indica el nombre del archivo, si es archivo o carpeta. Por ejemplo:</p>
+<code id='lectura_dir.js'></code>
+<script>insertar_codigo('src/nodejs/lectura_dir.js', 'lectura_dir.js');</script>
+
+<p>También se puede trabajar de forma asíncrona. En este caso, en lugar de usar fs.Dir.readSync(), se usará fs.Dir.read() que devuelve un objeto del tipo Promise:</p>
+<code id='lectura_dir_asincrona.js'></code>
+<script>insertar_codigo('src/nodejs/lectura_dir_asincrona.js', 'lectura_dir_asincrona.js');</script>
+
+<p>Si se compara la salida de la ejecución síncrona con la asíncrona, se puede ver que el mensaje "Fin del script" se coloca en sitios diferentes.</p>
+
+
+<h2>async y await</h2>
+
+<p>async colocado delante de una función indica que la función va a resolver un objeto Promise:</p>
+<code id='ej_async.js'></code>
+<script>insertar_codigo('src/nodejs/ej_async.js', 'ej_async.js');</script>
+
+<p>Hay situaciones en las que se necesita convertir un Promise de asíncrono a síncrono. Para ello se usa la palabra clave await delante del objeto Promise. IMPORTANTE: Sólo funciona dentro de una función async.</p>
+
+<p>En el siguiente ejemplo se transforma el objeto Promise, devuelto por fs.Dir.read(), de asíncrono a síncrono:</p>
+<code id='lectura_dir_await.js'></code>
+<script>insertar_codigo('src/nodejs/lectura_dir_await.js', 'lectura_dir_await.js');</script>
+
+
+<h1>Módulos y NPM</h1>
+
+<p>Se recomienda consultar la API de "Node.js" para hacerse una idea de los módulos que vienen incluidos por defecto:</p>
+
+<p><a href='https://nodejs.org/docs/latest-v12.x/api/all.html'>https://nodejs.org/docs/latest-v12.x/api/all.html</a></p>
+
+<p>Esta API por defecto está muy limitada, pero aún así permite crear un servidor HTTP de forma sencilla, por ejemplo:</p>
+<code id='server.js'></code>
+<script>insertar_codigo('src/nodejs/server.js', 'server.js');</script>
+
+
+<p>Pero "Node.js" tiene una herramienta que permite descargar más módulos llamada npm. La cantidad de módulos disponibles es inmensa. Estos se pueden consultar en:</p>
+<p><a href='https://www.npmjs.com/'>https://www.npmjs.com/</a></p>
+
+<p>Los módulos que se pueden instalar se pueden instalar de dos formas, en la carpeta actual y globalmente. Si se instalan globalmente, se podrá acceder a dicho módulo en cualquier carpeta de nuestro disco duro. Si se instala en la carpeta actual, sólo se podrá acceder a dicho módulo cuando estemos en dicha carpeta.</p>
+
+<p>Para instalar un módulo localmente se usará el comando:</p>
+
+<pre>npm install "nombre del módulo"</pre>
+
+<p>Por ejemplo, para instalar el módulo "electron" en la carpeta actual:</p>
+
+<pre>npm install electron</pre>
+
+<p>Se creará una carpeta llamada "node_modules". Dentro de esta carpeta, se encontrará el módulo descargado y sus dependencias. Si se consulta la carpeta del módulo, a veces se localiza el código fuente y su documentación.</p>
+
+<p>Para instalarlo globalmente se usará la opción "-g":</p>
+<pre>npm install electron -g</pre>
+
+<p>Cuando se instala globalmente, puede que también instalen ejecutables que se podrán usar. Por ejemplo, si se instala electron globalmente se tendrá disponible el comando "electron". Pruebe a instalar electron globalmente y a ejecutar el comando electron.</p>
+
+<p>Los módulos instalados estarán disponibles con require:</p>
+<pre>var electron = require('electron');</pre>
+
+<p>Es recomendable, antes de hacer cualquier tarea, ver los módulos disponibles en <a href='https://www.npmjs.com/'>https://www.npmjs.com/</a>. Por ejemplo, si se desea ver los archivos de una carpeta ya se ha visto fs.opendirSync, pero el módulo "glob" tiene mucha más potencia y sencillez. Entre los módulos recomendados se tienen:</p>
+
+<ul>
+<li>express: Es una herramienta para crear sitios web.</li>
+<li>mysql: Conexión con bases de datos MySQL.</li>
+<li>mongodb: Conexión con bases de datos MongoDB.</li>
+<li>Jade: Plantillas para crear páginas web.</li>
+<li>browserify: Javascript del navegador no dispone de require, esta utilidad crea un solo archivo Javascript juntando todos los archivos a través de sus require.</li>
+<li>electron: Es un navegador web que permite crear aplicaciones de escritorio. Microsoft Visual Studio o Atom son ejemplos de aplicaciones creadas con electron.</li>
+</ul>
+
+<h1>Creando proyectos "Node.js"</h1>
+
+<p>Para crear un proyecto con "Node.js" se creará una carpeta en el sitio donde se vaya a almacenar el proyecto. Después se creará el archivo "package.json", para ello se usará la herramienta "npm init". Sólo hay que ejecutar en un terminal:</p>
+
+<pre>npm init</pre>
+
+<p>Un asistente nos irá preguntando características del proyecto que se está creando. Por ejemplo:</p>
+
+<pre>
+$ mkdir ejemplo
+$ cd ejemplo/
+/ejemplo$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install pkg` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (ejemplo) Ejemplo
+Sorry, name can no longer contain capital letters.
+package name: (ejemplo) ejemplo
+version: (1.0.0) 0.0.1
+description: Ejemplo de proyecto nodejs
+entry point: (index.js) main.js
+test command:
+git repository:
+keywords: ejemplo, node
+author: Yo
+license: (ISC) BSD-3-Clause
+About to write to /media/lucas/Lucas/Publico/Asignaturas/Programacion-multimedia/Melonjs-2020-08-13/ejemplo/package.json:
+
+{
+  "name": "ejemplo",
+  "version": "0.0.1",
+  "description": "Ejemplo de proyecto nodejs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ejemplo",
+    "node"
+  ],
+  "author": "Yo",
+  "license": "BSD-3-Clause"
+}
+
+
+Is this OK? (yes) yes
+</pre>
+
+<p>El asistente muestra el archivo "package.json" que se creará. Los campos de dicho archivo son sencillos de entender, nombre, versión, palabras clave,... Pero hay otros campos, como scripts, que requieren un explicación más detallada.</p>
+
+<h2>Campo scripts de package.json</h2>
+
+<p>El campo scripts sirve para ejecutar comandos en línea de comandos. Por ejemplo, si se modifica el archivo de la siguiente forma:</p>
+
+<pre>
+{
+  "name": "ejemplo",
+  "version": "0.0.1",
+  "description": "Ejemplo de proyecto nodejs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    <strong>"listado": "ls -l"</strong>
+  },
+  "keywords": [
+    "ejemplo",
+    "node"
+  ],
+  "author": "Yo",
+  "license": "BSD-3-Clause"
+}
+</pre>
+
+<p>Se añade un script, al que se ha llamado "listado" y que ejecutará el comando por línea de comandos "ls -l".</p>
+
+<p>Para ejecutar los scripts se ejecutará por línea de comandos:</p>
+
+<pre>npm run "nombre del script"</pre>
+
+<p>Por ejemplo, para ejecutar el script "listado" que se acaba de añadir:</p>
+
+<pre>npm run listado</pre>
+
+<p>Pero será más habitual a crear, por ejemplo, un script llamado "build" que ayuda a construir la aplicación y otro llamado "start" para lanzar la aplicación. Veámoslo con un ejemplo:</p>
+
+<p>Supongamos que se crean los archivos "build.js" y "server.js" en nuestro proyecto. Supongamos que "build.js" crea unas páginas web a partir de unas plantillas y que "server.js" es el servidor HTTP que se ha visto en ejemplos anteriores. Se podría modificar "package.json" para añadir lo siguiente:</p>
+
+<pre>
+{
+  "name": "ejemplo",
+  "version": "0.0.1",
+  "description": "Ejemplo de proyecto nodejs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    <strong>"build": "node build.js",
+    "start": "npm run build && node server.js"</strong>
+  },
+  "keywords": [
+    "ejemplo",
+    "node"
+  ],
+  "author": "Yo",
+  "license": "BSD-3-Clause"
+}
+</pre>
+
+<p>Si se ejecuta el comando:</p>
+
+<pre>$ npm run build</pre>
+
+<p>Se ejecutará por línea de comandos:</p>
+
+<pre>&gt; node build.js</pre>
+
+<p>Si se ejecuta el comando:</p>
+
+<pre>$ npm run start</pre>
+
+<p>Se ejecutará por línea de comandos primero "npm run build" que a su vez ejecuta:</p>
+
+<pre>&gt; node build.js</pre>
+
+<p>Se ejecutará también "node server.js" que lanzará nuestro servidor web para ver las páginas.</p>
+
+
+<h2>Campo dependencies de package.json</h2>
+
+<p>Cuando se crea un proyecto, puede que se necesiten instalar módulos, usando npm install nombre, para instalar las dependencias del proyecto. Por ejemplo, si nuestro proyecto va a usar el módulo electron, sería cómodo indicarlo en "package.json" y que con un comando se instalasen de forma automática. Para indicar las dependencias se usará el campo dependencies. Por ejemplo, para indicar que nuestro proyecto depende de electron y del paquete tex2max:</p>
+
+<pre>{
+  "name": "ejemplo",
+  "version": "0.0.1",
+  "description": "Ejemplo de proyecto nodejs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "start": "electron main.js"
+  },
+  "keywords": [
+    "ejemplo",
+    "node"
+  ],
+  "author": "Yo",
+  "license": "BSD-3-Clause",
+  <strong>"dependencies": {
+    "electron": "^2.0.4",
+    "tex2max": "^1.3.0"
+  }</strong>
+}
+</pre>
+
+<p>Como se puede ver en dependencies se debe indicar el nombre del paquete y la versión que se necesita para que el proyecto funcione.</p>
+
+<p>Para instalar las dependencias se usará:</p>
+
+<pre>npm install</pre>
+
+<p>Al ejecutarlo instalará los paquetes solicitados.</p>
+
+<p>En el caso de querer que se ejecute algún comando al finalizar la instalación de los paquetes se puede añadir el campo "postinstall" a los scripts:</p>
+
+<pre>{
+  "name": "ejemplo",
+  "version": "0.0.1",
+  "description": "Ejemplo de proyecto nodejs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "start": "electron main.js",
+    <strong>"postinstall": "node install.js"</strong>
+  },
+  "keywords": [
+    "ejemplo",
+    "node"
+  ],
+  "author": "Yo",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "electron": "^2.0.4",
+    "tex2max": "^1.3.0"
+  }
+}
+</pre>
+
+<p>Cuando se ejecute "npm install", al finalizar la instalación de las dependencias se ejecutará el comando asociado a "postinstall" que en este caso es "node install.js". Si se escribe un archivo "install.js", se puede usar para tareas como instalar ejecutables o procesar plantillas.</p>
+
+<p>Se recomienda al lector hacer un ejercicio creando un proyecto con algunas dependencias y scripts.</p>
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>

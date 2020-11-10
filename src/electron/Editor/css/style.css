@@ -1,0 +1,27 @@
+.menu {
+	display: inline-block;
+	padding: 0px;
+}
+
+.menu li {
+	display: inline-block;
+	padding: 10px;
+	background-color: #0303ff;
+	color: white;
+	font-weight: bold;
+	font-family: sans;
+	border-style: solid;
+	cursor: pointer;
+}
+
+.menu li:hover {
+	display: inline-block;
+	padding: 10px;
+	background-color: #030303;
+	color: white;
+	font-weight: bold;
+	font-family: sans;
+	border-style: solid;
+	cursor: pointer;
+}
+

@@ -4,8 +4,10 @@ var paginas = [
     {url : 'variables.html', titulo : 'Variables', id : 'variables'},
     {url : 'control_flujo.html', titulo : 'Control de flujo', id : 'control_flujo'},
     {url : 'funciones.html', titulo : 'Funciones', id : 'funciones'},
-    {url : 'objetos.html', titulo : 'Objetos', id : 'objetos'}, 
-    {url : 'estructuras_datos.html', titulo : 'Estructuras de datos', id : 'estructuras_datos'}
+    {url : 'objetos.html', titulo : 'Objetos', id : 'objetos'},
+    {url : 'estructuras_datos.html', titulo : 'Estructuras de datos', id : 'estructuras_datos'},
+    {url : 'nodejs.html', titulo : 'Node.js', id : 'nodejs'},
+    {url : 'electron.html', titulo : 'Electron', id : 'electron'}
 ];
 
 function pre_pagina(titulo, id)
@@ -26,7 +28,7 @@ function pre_pagina(titulo, id)
           </div>
           `+enlaces+`
         </div>
-      
+
         <!-- Inicio del div principal -->
         <div class="w3-main" style="margin-left:220px; margin-right:20px">
             <!-- Botón y título de la página principal-->
@@ -62,7 +64,7 @@ function post_pagina(titulo, id)
             </div>
         </div>
     `);
-    
+
     var sublista = 0, titulo, titulos = document.querySelectorAll('h1, h2');
     enlaces = '<p>Índice de contenidos:</p><ol>';
     for(n=1;n<titulos.length;n++) {

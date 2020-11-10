@@ -116,8 +116,8 @@ En el caso de que los números sean enteros, no tengan decimales, se pueden hace
     var b = 3;
     var c;
     c = a + b;      // c = 5 Hasta aquí todo normal
-    c = a + b++ ;   /* ¡ c = 5 ! y b = 4. Antes de llegar el ; b valía 3, por lo tanto 
-                       se hace la operación c = 2 + 3, cuando se supera el ; se hace 
+    c = a + b++ ;   /* ¡ c = 5 ! y b = 4. Antes de llegar el ; b valía 3, por lo tanto
+                       se hace la operación c = 2 + 3, cuando se supera el ; se hace
                        que b incremente su valor */
 </pre></code>
 
@@ -128,7 +128,7 @@ En el caso de que los números sean enteros, no tengan decimales, se pueden hace
     var b = 3;
     var c;
     c = a + b;      // c = 5 Hasta aquí todo normal
-    c = a + ++b ;   /* ¡ c = 6 ! y b = 4.  b valía 3 y se incrementa a b = 4, 
+    c = a + ++b ;   /* ¡ c = 6 ! y b = 4.  b valía 3 y se incrementa a b = 4,
                        por lo tanto se hace la operación c = 2 + 4 */
 </pre></code>
 
@@ -151,7 +151,7 @@ En el caso de que los números sean enteros, no tengan decimales, se pueden hace
 <p>Con comillas simples y dobles sólo podemos introducir textos que ocupen una línea. En el caso de querer introducir textos que ocupen varias líneas se usará el acento invertido ` (es un acento y como los que se ponen a las vocales (àèìòù) pero está invertido). El acento invertido suele estar en el teclado a la derecha de la tecla p. Un ejemplo:</p>
 
 <code><pre>
-    var a = `Este texto 
+    var a = `Este texto
         puede ocupar
         varias líneas`
 </pre></code>
@@ -277,6 +277,22 @@ En el caso de que los números sean enteros, no tengan decimales, se pueden hace
 
 <p>En el ejemplo anterior con el uso de la función parseInt, la salida del comando prompt se transforma en un número entero y por ello se le puede sumar el 2.</p>
 
+<h1>Let y var</h1>
+
+<p>Hasta ahora se han definido todas las variables usando "var". En las versiones modernas se desaconseja el uso de var y se recomienda el uso de let. Es decir las variables se declararán con let:</p>
+
+<pre>
+    let a = 1;
+    let b = 2;
+    document.write(a + b);
+</pre>
+
+<p>Si se usan igual, ¿cuál es la diferencia? Las variables definidas con let se destruyen fuera del bloque en el que fueron definidas bloque. Un bloque es lo que hay entre dos { }:</p>
+
+<code id='let.html'></code>
+<script>insertar_codigo('src/variables/let.html', 'let.html');</script>
+
+<p>En el ejemplo, la variable j se destruye al salir del bloque. La variable i continua hasta el final de la función. Más adelante, en el apartado de funciones, se verá que las variables definidas dentro de una función (function) se destruyen al salir del bloque de la función (da igual que estén definidas por var o let).</p>
 
 
 <script>
