@@ -244,6 +244,23 @@
 
 <p>Las funciones como variables se suelen usar mucho para tratar eventos o definir objetos en Javascript.</p>
 
+<h1>Verificar formularios</h1>
+
+<p>En muchas ocasiones, antes de enviar un formulario, hay que verificar que sus campos sean correctos. Para ello hay que especificar la función que se va a ejecutar en el momento de pulsar el botón de enviar el formulario. Dicha función debe devolver true o false en función de si el formulario es válido o no. Esto se especifica en el campo "onsubmit" del formulario:</p>
+
+<code>
+  &lt;form action="servlet" <strong>onsubmit="return validar()"</strong> method="post"&gt;<br>
+  Texto: &lt;input type="text" name="texto" id="texto"&gt;<br>
+  &lt;input type="submit" value="Enviar"&gt;<br>
+  &lt;/form&gt;
+</code>
+
+<p>Por ejemplo:</p>
+
+<code id='funciones14.html'></code>
+<script>insertar_codigo('src/funciones/funciones14.html', 'funciones14.html');</script>
+
+
 <script>
     post_pagina(titulo, id_pagina);
 </script>

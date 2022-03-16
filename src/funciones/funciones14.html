@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+  </head>
+  <body>
+    <form action="servlet" onsubmit="return validar()" method="post">
+      Texto: <input type="text" name="texto" id="texto">
+      <input type="submit" value="Enviar">
+    </form>
+    <script>
+      function validar() {
+        var texto = document.getElementById("texto");
+        if(texto.value == "") {
+          alert("El campo texto está vacío");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
