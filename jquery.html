@@ -1,0 +1,83 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Introducción a jQuery';
+    var id_pagina = 'jquery';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+
+<h1>Introducción a jQuery</h1>
+
+<p>jQuery es una biblioteca que permite modificar o consultar de forma sencilla los elementos de una página web. También permite gestionar eventos o hacer peticiones AJAX.</p>
+
+<p>Con jQuery podemos:</p>
+<ul>
+  <li>Modificar o consultar el DOM de HTML</li>
+  <li>Manipular el CSS</li>
+  <li>Manejar eventos</li>
+  <li>Llamadas AJAX</li>
+  <li>Otras utilidades, como puede ser arrastrar y soltar elementos de una página web y reordenarlos.</li>
+</ul>
+
+<h1>Importando la biblioteca</h1>
+
+<p>La biblioteca se puede descargar desde <a href='https://jquery.com/'>jquery.com</a> e incluirla en nuestras páginas, o bien, enlazarlo usando las APIs de Google:</p>
+<code>
+  <pre>
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"&gt;&lt;/script&gt;</pre>
+</code>
+
+
+<h1>Un primer ejemplo de uso</h1>
+
+<p>La sintaxis normal de una función en jQuery suele ser:</p>
+<code><pre>
+$("selector").método();
+</pre></code>
+
+<p>Donde "selector" es una forma de hacer búsquedas en los elementos del HTML usando una sintaxis similar a la que se usa en CSS. Por ejemplo:</p>
+
+<code><pre>
+&lt;div id="texto"&gt;Esto es un texto&lt;div&gt;
+&lt;p&gt;Esto es un párrafo&lt;p&gt;
+&lt;div class='.rojo'&gt;Esto es un elemento que pertenece a la clase ".rojo"&lt;div&gt;
+
+...
+
+$("#texto").hide(); // Esconde el elemento con id "texto"
+$("p").hide(); // Esconde todos los elementos de tipo párrafo &lt;p&gt;
+$(".rojo").hide(); // Esconde todos los elementos que tengan la clase ".rojo" en su estilo (CSS)
+</pre></code>
+
+<p>Los métodos disponibles en jQuery se pueden <a href='https://api.jquery.com/'>consultar en su documentación.</a></p>
+
+<p>En el siguiente ejemplo se puede ver como capturar el evento click:</p>
+<code id="jquery_click.html"></code>
+<script>insertar_codigo('src/jquery/jquery_click.html', 'jquery_click.html');</script>
+
+
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
