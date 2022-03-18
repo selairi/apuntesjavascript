@@ -58,7 +58,7 @@ $("selector").método();
 <code><pre>
 &lt;div id="texto"&gt;Esto es un texto&lt;div&gt;
 &lt;p&gt;Esto es un párrafo&lt;p&gt;
-&lt;div class='.rojo'&gt;Esto es un elemento que pertenece a la clase ".rojo"&lt;div&gt;
+&lt;div class='rojo'&gt;Esto es un elemento que pertenece a la clase "rojo"&lt;div&gt;
 
 ...
 
@@ -73,7 +73,35 @@ $(".rojo").hide(); // Esconde todos los elementos que tengan la clase ".rojo" en
 <code id="jquery_click.html"></code>
 <script>insertar_codigo('src/jquery/jquery_click.html', 'jquery_click.html');</script>
 
+<h1>Capturar eventos</h1>
 
+<p>A los siguientes métodos se les debe pasar una funcioón como argumento. Esta función será la que procese el evento:</p>
+
+<p><strong>.click(función)</strong> Ejecuta la función que se le pasa como argumento cuando se hace clic sobre el elemento referenciado. Por ejemplo:</p>
+
+<code id="jquery_click.html"></code>
+<script>insertar_codigo('src/jquery/jquery_click.html', 'jquery_click.html');</script>
+
+<p><strong>.dblclick(función)</strong> Ejecuta la función que se le pasa como argumento cuando se hace doble clic sobre el elemento referenciado.</p>
+
+<p><strong>$(document).ready(función)</strong> Ejecuta la función que se le pasa como argumento cuando el documento HTML ha sido cargado completamente. Los navegadores en general van mostrando las páginas según las van recibiendo del servidor, por lo que se podría dar el caso de que un javascript hiciese referencia a un objeto que todavía no ha sido cargado.</p>
+
+<code id="jquery_ready.html"></code>
+<script>insertar_codigo('src/jquery/jquery_ready.html', 'jquery_ready.html');</script>
+
+<p>Hay que fijarse en que se le pasa como argumento el objeto "document".</p>
+
+<p><strong>.mouseenter(función)</strong> Ejecuta la función que se le pasa como argumento cuando se pone el ratón sobre el elemento referenciado.</p>
+
+<p><strong>.mouseleave(función)</strong> Ejecuta la función que se le pasa como argumento cuando se quita el ratón cuando éste estaba sobre el elemento referenciado.</p>
+
+<p><strong>.mousedown(función)</strong> Ejecuta la función que se le pasa como argumento cuando se aprieta, y no se levanta, un botón del ratón sobre el elemento referenciado. Se usa, por ejemplo, cuando se va a arrastrar un elemento</p>
+
+<p><strong>.mouseup(función)</strong> Ejecuta la función que se le pasa como argumento cuando se levanta un botón del ratón que previamente había sido pulsado sobre el elemento referenciado.</p>
+
+<p><strong>.focus(función)</strong> Ejecuta la función que se le pasa como argumento cuando el elemento referenciado obtiene el foco del teclado. Por ejemplo, cuando en un formulario una entrada de texto adquiere el foco para escribir en él.</p>
+
+<p><strong>.blur(función)</strong> Es el caso contrario al anterior. Ejecuta la función que se le pasa como argumento cuando el elemento referenciado pierde el foco del teclado.</p>
 
 <script>
     post_pagina(titulo, id_pagina);
