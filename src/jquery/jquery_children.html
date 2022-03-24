@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset='utf-8'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<div id='div_contenedor'>
+  <p>Párrafo.</p>
+  <p>Párrafo.</p>
+  <p>Párrafo.</p>
+  <p>Párrafo.</p>
+</div>
+
+<script>
+  // Se recorren los hijos de div_contenedor
+  $('#div_contenedor').children().each(
+      function(indice, objeto) {
+        $(this).text("Este es el párrafo " + indice);      
+      }
+  );
+</script>

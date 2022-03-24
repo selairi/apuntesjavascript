@@ -103,6 +103,192 @@ $(".rojo").hide(); // Esconde todos los elementos que tengan la clase ".rojo" en
 
 <p><strong>.blur(función)</strong> Es el caso contrario al anterior. Ejecuta la función que se le pasa como argumento cuando el elemento referenciado pierde el foco del teclado.</p>
 
+<p>Por último, en cuando eventos, se dispone del método de jQuery <strong>on()</strong>. Con el método "on()" se debe pasar el nombre del evento que se desea capturar y la función que debe capturar dicho evento. Por ejemplo:</p>
+
+<code><pre>
+$('div').on("click", function() {
+  $('div').hide();
+  });</pre>
+</code>
+
+<h1>text(), html() y val()</h1>
+
+<p>En el caso de que se quiera modificar o consultar el contenido de un elemento de HTML se puede usar <strong>text()</strong> y <strong>html()</strong>. Con formularios, se puede consultar o modificar el valor introducido por el usuario en el con <strong>val()</strong>. Por ejemplo:</p>
+<code id="jquery_valores.html"></code>
+<script>insertar_codigo('src/jquery/jquery_valores.html', 'jquery_valores.html');</script>
+
+<h1>Añadir o quitar elementos del DOM de HTML</h1>
+
+<p>Se pueden añadir o quitar textos o elementos del HTML que estemos procesando.</p>
+
+<p>Para añadir se tienen los siguientes métodos:</p>
+<ul>
+  <li><strong>append()</strong> Se usa para añadir contenidos al final del elemento seleccionado.</li>
+  <li><strong>prepend()</strong> Se usa para añadir contenidos al principio del elemento seleccionado.</li>
+  <li><strong>after()</strong> Se usa para añadir elementos de HTML después del elemento seleccionado.</li>
+  <li><strong>before()</strong> Se usa para añadir elementos de HTML antes del elemento seleccionado.</li>
+</ul>
+
+<p>Para eliminar elementos se usará:</p>
+<ul>
+  <li><strong>remove()</strong> Borra un elemento y todos sus hijos.</li>
+  <li><strong>empty()</strong> Borra los contenidos de un elemento. También sus hijos.</li>
+</ul>
+
+<p>Por ejemplo, veamos la diferencia entre append() y after():</p>
+<code id="jquery_append_after.html"></code>
+<script>insertar_codigo('src/jquery/jquery_append_after.html', 'jquery_append_after.html');</script>
+
+<p>Si se abriera el inspector de código y se inspeccionase el mismo, se encontrará algo similar a:</p>
+
+<code><pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p id="elemento"&gt;Primer párrafo.<b>Texto añadido</b>&lt;/p&gt;
+  <b>Párrafo añadido</b>
+  &lt;script&gt;...&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</code>
+
+<p>Como se puede ver after() añade el texto "Párrado añadido" después elemento seleccionado.</p>
+
+<p>El funcionamiento de prepend() y before() es similar.</p>
+
+<p>Tanto append() como prepend() son útiles para añadir elementos a una lista.</p>
+<code id="jquery_lista.html"></code>
+<script>insertar_codigo('src/jquery/jquery_lista.html', 'jquery_lista.html');</script>
+
+<p>Como ejemplo de remove y empty:</p>
+<code id="jquery_remove.html"></code>
+<script>insertar_codigo('src/jquery/jquery_remove.html', 'jquery_remove.html');</script>
+
+<p>Si se abriera el inspector del navegador, se puede ver que el h1 ha desaparecido y el div está sin contenido, pero sigue existiendo.</p>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'>
+  <p>No confundir con los métodos <strong>hide()</strong> y <strong>show()</strong>. Ambos métodos modifican el CSS para ocultar/mostrar el elemento, pero no borran ni añaden nada al código HTML.</p>
+</div>
+
+<h1>Bucle each()</h1>
+
+<p>Muchas veces el selector introducido en jQuery devuelve varios elementos. Por ejemplo, cuando se seleccionan todos los párrafos de un texto. El bucle <strong>each()</strong> sirve para ejecutar una función en cada uno de los objetos devueltos. Por ejemplo:</p>
+<code id="jquery_each.html"></code>
+<script>insertar_codigo('src/jquery/jquery_each.html', 'jquery_each.html');</script>
+
+<p>Como se puede ver al método each() se le debe pasar como argumento una función del tipo:</p>
+<code><pre>function (indice, objeto) {}  
+</pre></code>
+
+<p>donde "indice" es un número que representa el número del elemento que se ha recorrido en el bucle (igual que el contador de un bucle for) y "objeto" es el elemento que se está recorriendo en ese instante.</p>
+
+<p>Hay otras formas de pasar la función al método each(), se deja como ejercicio para el lector buscar esas formas de function alternativas.</p>
+
+<h1>Padres e hijos</h1>
+
+<p>Supongamos el siguiente código HTML:</p>
+<code><pre>&lt;div id='padre'&gt;
+  &lt;div&gt;Hijo 1&lt;/div&gt;
+  &lt;div&gt;Hijo 2&lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+
+<p>En este caso el div que se ha llamado "padre", contiene a otros dos div. Estos elementos contenidos dentro de otro elemento de HTML se llamarán hijos.</p>
+
+<p>A su vez un hijo puede contener a otros hijos:</p>
+<code><pre>&lt;div id='padre'&gt;
+  &lt;div&gt;
+    &lt;div&gt;Hijo 1.2&lt;/div&gt;
+    &lt;div&gt;Hijo 2.2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;Hijo 2&lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+
+<p>Es decir, un hijo puede ser padre de otros elementos.</p>
+
+<p>Con los siguientes métodos se puede obtener en jQuery la lista de los padres y los hijos de un elemento:</p>
+<ul>
+  <li><strong>children()</strong> devuelve una lista con los hijos de un elemento.</li>
+  <li><strong>parent()</strong> devuelve el elemento que es padre de un elemento.</li>
+</ul>
+
+<p>Se puede usar un bucle each() para manipular a los hijos devueltos. Por ejemplo:</p>
+<code id="jquery_children.html"></code>
+<script>insertar_codigo('src/jquery/jquery_children.html', 'jquery_children.html');</script>
+
+<h1>Modificando el CSS</h1>
+
+<p>Ya se vio cómo se podía manipular el estilo CSS de un elemento del HTML, incluso añadir y quitar clases. jQuery también tiene su estilo de hacer estas operaciones:</p>
+<ul>
+  <li><strong>addClass()</strong> añade una clase CSS al elemento</li>
+  <li><strong>removeClass()</strong> borra una clase CSS al elemento</li>
+</ul>
+<code id="jquery_class.html"></code>
+<script>insertar_codigo('src/jquery/jquery_class.html', 'jquery_class.html');</script>
+
+<h1>Ajax</h1>
+
+<p>Ajax es un mecanismo por el cual el navegador puede hacer peticiones al servidor sin recargar la página que se está mostrando. Se puede, por ejemplo, cargar una página HTML, desde esta página cargar el contenido de otra página en el interior de un div. También se pueden hacer peticiones GET o POST en segundo plano.</p>
+
+<p>Para que todo funcione correctamente, es necesario visualizar nuestras páginas desde un servidor HTTP, como puede ser Tomcat. Cuando se está desarrollando, muchas veces se hace doble clic sobre las páginas html y el navegador las muestra sin necesidad de servidor HTTP. Es necesario un servidor HTTP para que los ejemplos funcionen correctamente.</p>
+
+<p>En el primer ejemplo, se desde la página web actual se va a cargar el contenido de dos archivos que están en el servidor. Los dos archivos van a ser:</p>
+<code id="archivo1.txt"></code>
+<script>insertar_codigo('src/jquery/archivo1.txt', 'archivo1.txt');</script>
+
+<p>y:</p>
+
+<code id="archivo2.txt"></code>
+<script>insertar_codigo('src/jquery/archivo2.txt', 'archivo2.txt');</script>
+
+<p>Para hacer la petición AJAX se usará el método <strong>load(URL)</strong>.</p>
+<code id="jquery_load.html"></code>
+<script>insertar_codigo('src/jquery/jquery_load.html', 'jquery_load.html');</script>
+
+<p>Si se hace clic sobre el botón "Cargar contenidos", funcionará correctamente. Si se hace clic sobre el botón "Cargar Google", no funcionará y la consola de errores mostrará el siguiente mensaje:</p>
+<p><i>Solicitud desde otro origen bloqueada: la política de mismo origen impide leer el recurso remoto en https://google.com/ (razón: falta la cabecera CORS 'Access-Control-Allow-Origin'). Código de estado: 301.</i></p>
+
+<p>Por cuestiones de seguridad no se suele permitir hacer peticiones AJAX a otro servidor. Sólo se pueden hacer peticiones AJAX al mismo servidor desde el que se ha descargado la página. El servidor le pasa al navegador un mensaje indicando si es seguro cargar los contenidos desde una página que no esté alojada en el servidor (lo habitual es que le diga que no es seguro). Según lo que el diga el servidor el navegador bloquea las peticiones en consecuencia.</p>
+
+<p>El método load() se puede usar para los típicos enlaces de "Leer más" que muestran muchas páginas.</p>
+
+<h2>Petición GET</h2>
+
+<p>Para hacer una petición GET, se usará el método <strong>$.get(URL, petición, función(datos, estado))</strong> donde "URL" es la URL a la que se hace la petición, "petición" son los datos que se le pasan al servidor (el equivalente a los campos de un formulario con sus correspondientes valores en un JSON) y "función" es la función que se ejecutará cuando se termine la petición. Dicha función tiene dos argumentos "datos" que es un String con lo que devuelve el servidor y "estado" que es un String que vale "success" cuando la petición ha sido un éxito.</p>
+
+<p>Para hacer los ejemplos se puede escribir un servler que capture las peticiones. En nuestro caso se usará:</p>
+
+<p><a href="https://httpbin.org/">https://httpbin.org/</a></p>
+
+<p>Es un simple servidor que permite las peticiones AJAX cruzadas y no se genera el error 301.</p>
+
+<p>En concreto se usará la página:</p>
+<p><a href="https://httpbin.org/anything">https://httpbin.org/anything</a></p>
+
+<p>Se recomienda visitar la página <a href="https://httpbin.org/anything">https://httpbin.org/anything</a>. Se puede ver que devuelve un JSON.</p>
+
+<p>Si se le pasan argumentos en la petición GET, se puede ver que se añaden al JSON. Por ejemplo:</p>
+<p><a href="https://httpbin.org/anything">https://httpbin.org/anything?hola=mundo</a></p>
+
+<p>Vemos que el parámetro "hola" con valor "mundo" se ha añadido a la respuesta.</p>
+
+<p>Una de las ventajas de jQuery es que puede detectar el tipo de respuesta y operar en consecuencia, por lo que si detecta que la respuesta es un JSON, procesará el texto y lo introducirá en un mapa que se puede consultar. Por ejemplo:</p>
+<code id="jquery_get.html"></code>
+<script>insertar_codigo('src/jquery/jquery_get.html', 'jquery_get.html');</script>
+
+<h2>Petición POST</h2>
+
+<p>El método POST se usa exactamente igual que el GET, pero con el método <strong>$.post(URL, petición, función(datos, estado))</strong>:</p>
+
+<code id="jquery_post.html"></code>
+<script>insertar_codigo('src/jquery/jquery_post.html', 'jquery_post.html');</script>
+
+
+
 <script>
     post_pagina(titulo, id_pagina);
 </script>

@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <p id='text'></p>
+    <p id='html'></p>
+    <form action="servlet" method="get">
+      <p><input type='text' name='entradatexto' id='entradatexto'></p>
+      <p><input type="submit" value="Enviar"></p>
+    </form>
+    <script>
+      // Para cambiar valores se pasa como argumento
+      $('#text').text("Sólo <b>texto</b>");
+      $('#html').text("Sólo <b>html</b>");
+      $('#entradatexto').val('Introduzca sus datos');
+
+      // Si no se pasan argumentos, se devuelve el valor contenido en el elemento seleccionado
+      let texto = $('#text').text();
+      alert( "" + texto );
+      let html = $('#html').html();
+      alert( "" + html );
+      let entradatexto = $('#entradatexto').val();
+      alert( entradatexto);
+    </script>
+  </body>
+</html>

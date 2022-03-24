@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset='utf-8'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<pre id='p1'>Respuesta</pre>
+<pre id='p2'>Argumentos</pre>
+<button id='boton_cargar'>Hacer petición GET</button>
+
+<script>
+  $('#boton_cargar').click(function() {
+      $.post(
+          'https://httpbin.org/anything', // URL de la petición
+          { // Valores de la petición
+              "hola": "mundo",
+              "otra": "Otro valor"
+          },
+          function(datos, estado) { // Función que procesa el resultado
+            alert("Respuesta recibida");
+            // Se comprueba que la petición ha sido un éxito
+            if(estado == "success") {
+              // En datos están los datos del JSON devuelto, se puede acceder a ellos
+              $('#p1').text(datos["origin"]);
+              $('#p2').text(datos["args"]["hola"]);
+              let otra = datos["args"]["otra"];
+              // Se hacen operaciones con los valores, por ejemplo, un if
+              if(otra == "Otro valor") {
+                $('#botton_cargar').after('<p>El valor de otra es "Otro valor"</p>');
+              }
+            } else {
+                // Petición errónea, se muestra el error.
+                alert("Error: " + estado);
+            }
+          }
+        );
+    }
+  );
+</script>

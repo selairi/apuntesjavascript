@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset='utf-8'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<p>Párrafo.</p>
+<p>Párrafo.</p>
+<p>Párrafo.</p>
+<p>Párrafo.</p>
+
+<script>
+  $('p').each(
+      function(indice, objeto) {
+        $(objeto).text("Este es el párrafo " + indice);      
+      }
+  );
+</script>

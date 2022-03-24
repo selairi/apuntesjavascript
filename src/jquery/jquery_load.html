@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset='utf-8'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<div id='p1'>Párrafo 1</div>
+<div id='p2'>Párrafo 2</div>
+<button id='boton_cargar'>Cargar contenidos</button>
+
+<div id='google'></div>
+<button id='boton_google'>Cargar Google</button>
+
+
+<script>
+  $('#boton_cargar').click(function() {
+      $('#p1').load('archivo1.txt')
+      $('#p2').load('archivo2.txt');
+    }
+  );
+
+  $('#boton_google').click(function() {
+      $('#google').load('https://google.com')
+    }
+  );
+</script>
