@@ -1,0 +1,14 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<p id='p1'>El texto cambiará cuando pasen 5 segundos</p>
+
+<script>
+  function cambiaTexto() {
+    let p1 = document.getElementById('p1');
+    p1.innerHTML = "Fin del tiempo";
+  }
+  
+  // Se ejecuta cambiaTexto después de 1 segundo
+  let timeout = setTimeout(cambiaTexto, 5000);
+</script>

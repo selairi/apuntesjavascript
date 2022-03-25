@@ -1,0 +1,50 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<form id='formulario' action="servlet" method="get">
+  <p><input type="text" name="texto" id='texto' value="Teclea aquí"></p>
+  <p><input type="checkbox" name="check" id='check'> Acepta las condiciones del servicio</p>
+  <p id='condiciones' style='display: none'>Texto muy largo...</p>
+  <p><input type="submit" value="Enviar &rarr;"></p>
+</form>
+
+<script>
+  // Evento submit
+  let formulario = document.getElementById('formulario');
+  formulario.addEventListener("submit", 
+      function(form) { // IMPORTANTE: Debe recibir el argumento form
+          let check = document.getElementById('check');
+          // Se puede comprobar si un checkbox está seleccionado consultado el atributo "checked":
+          if(! check.checked)
+            form.preventDefault();
+          // form.preventDefault() sirve para parar el envío del formulario
+      }
+  );
+
+  // Evento change
+  let check = document.getElementById('check');
+  check.addEventListener('change',
+    function() {
+      let check = document.getElementById('check');
+      let condiciones = document.getElementById('condiciones');
+      if(check.checked) 
+          condiciones.style.display = 'block';
+      else
+          condiciones.style.display = 'none';
+    }
+  );
+
+  // Evento focus
+  let primeraVezTexto = true;
+  let texto = document.getElementById('texto');
+  texto.addEventListener("focus",
+    function() {
+      // Si es la primera vez que recibe el foco, se borra el texto:
+      if(primeraVezTexto) {
+        primeraVezTexto = false;
+        let texto = document.getElementById('texto');
+        texto.value = '';
+      }
+    }
+  );
+</script>

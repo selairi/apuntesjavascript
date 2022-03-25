@@ -7,6 +7,7 @@ var paginas = [
     {url : 'objetos.html', titulo : 'Objetos', id : 'objetos'},
     {url : 'estructuras_datos.html', titulo : 'Estructuras de datos', id : 'estructuras_datos'},
     {url : 'jquery.html', titulo : 'Introducción a jQuery', id : 'jquery'},
+    {url : 'eventos.html', titulo : 'Eventos', id : 'eventos'},
     {url : 'nodejs.html', titulo : 'Node.js', id : 'nodejs'},
     {url : 'electron.html', titulo : 'Electron', id : 'electron'}
 ];

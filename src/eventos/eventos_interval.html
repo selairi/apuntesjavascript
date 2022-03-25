@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<p id='p1'>Contador</p>
+
+<script>
+  let n = 0;
+  let timeInterval = null;
+  function contador() {
+    let p1 = document.getElementById('p1');
+    p1.innerHTML = "Contador: " + n++;
+    if(n > 5) {
+      clearInterval(timeInterval);
+    }
+  }
+  
+  // Se ejecuta contador cada 1 segundo
+  timeInterval = setInterval(contador, 1000);
+</script>

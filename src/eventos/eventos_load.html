@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<p id='p1'>La página se está cargando.</p>
+
+<script>
+  window.addEventListener("load",
+      function() {
+          let p1 = document.getElementById('p1');
+          p1.innerHTML = "La página se ha cargado";
+      }
+  );
+</script>

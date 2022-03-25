@@ -1,0 +1,151 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Eventos';
+    var id_pagina = 'eventos';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Eventos</h1>
+
+<p>Ya se ha visto que desde Javascript se pueden capturar eventos, como puede ser el clic del ratón o el envío de un formulario. Lo que se hacía era añadir en una etiqueta la función que se deseaba que se ejecutara en el propio elemento de html:</p>
+
+<code><pre>&lt;div <strong>onclick='función()'</strong>&gt; ...
+</pre></code>
+
+<p>Pero hay otra forma de capturar los eventos sin necesidad de indicarlo directamente en el HTML. Así se puede separar el HTML del Javascript. Para ello se usarán los siguientes métodos:</p>
+<ul>
+  <li><strong>addEventListener(evento, función)</strong> Ejecuta la "función" cuando se produce el "evento".</li>
+  <li><strong>removeEventListener(evento, función)</strong> Deja de hacer que se ejecute la "función" cuando se produce el evento.</li>
+</ul>
+
+<p>En ambos casos "evento" es un String con el nombre del evento.</p>
+<code id="eventos_click.html"></code>
+<script>insertar_codigo('src/eventos/eventos_click.html', 'eventos_click.html');</script>
+
+<p>Como es fácil deducir, si se añaden varias funciones el mismo evento, se ejecutarán todas ellas al producirse el evento.</p>
+
+<p>Entre los eventos disponibles se tienen:</p>
+<p>Eventos del ratón:</p>
+<ul>
+  <li><strong>click</strong>: Clic del ratón soble el elemento.</li>
+  <li><strong>dblclick</strong>: Clic del ratón soble el elemento.</li>
+  <li><strong>mouseenter</strong> y <strong>mouseleave</strong>: Se activa cuando el puntero del ratón entra o sale del elemento.</li>
+  <li><strong>mousedown</strong> y <strong>mouseup</strong>: Se activa cuando se deja pulsado el ratón o se deja de pulsar el botón, respectivamente.</li>
+  <li><strong>mouseover</strong>: Cuando el puntero del ratón está sobre el elemento.</li>
+  <li><strong>contextmenu</strong>: Cuando se pulsa el botón derecho del ratón.</li>
+</ul>
+
+<p>Eventos del teclado:</p>
+<ul>
+  <li><strong>keydown</strong>: Cuando se pulsa una tecla.</li>
+  <li><strong>keyup</strong>: Cuando se deja de pulsar una tecla.</li>
+</ul>
+
+<p>Eventos de formularios:</p>
+<ul>
+  <li><strong>submit</strong>: Se activa cuando se va a enviar el formulario. La función puede parar el envío del formulario.</li>
+  <li><strong>focus</strong>: Cuando el elemento del formulario recibe el foco del teclado.</li>
+  <li><strong>blur</strong>: Cuando el elemento del formulario pierde el foco.</li>
+  <li><strong>change</strong>: Cuando cambia el elemento del formulario. Por ejemplo, el usuario ha marcado una casilla (checkbox) y se le deben mostrar más opciones.</li>
+  <li><strong>reset</strong>: Cuando se pulsa el botón de reset del formulario.</li>
+</ul>
+
+<p>Eventos relacionados con la carga de la página:</p>
+<ul>
+  <li><strong>load</strong>: Se ha terminado de cargar la página.</li>
+  <li><strong>unload</strong>: Cuando el usuario cierra la ventana.</li>
+  <li><strong>resize</strong>: Cuando el usuario cambia el tamaño de la ventana.</li>
+</ul>
+
+<p>Algunos de los eventos nombrados requieren que la función que se pasa como argumento reciba ciertos parámetros. Por ejemplo, cuando se pulsa una tecla la función de su evento correspondiente debe recibir como parámetro la tecla que se ha pulsado.</p>
+
+<p>Como curiosidad los navegadores están preparados para recibir eventos de un gamepad, si este es conectado. Se puede consultar la documentación correspondiente en:</p>
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API">https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API</a>
+
+<p>Se van a estudiar algunos eventos interesantes o que necesitan un uso especial.</p>
+
+<h2>Evento load</h2>
+
+<p>El evento "load" se debe realizar sobre el objeto window. Se suele usar en página web muy grandes que tarden mucho en cargarse. Por ejemplo:</p>
+<code id="eventos_load.html"></code>
+<script>insertar_codigo('src/eventos/eventos_load.html', 'eventos_load.html');</script>
+
+<h2>Formularios</h2>
+
+<p>Es muy común tratar los eventos de los formularios, como pueden ser el evento submit, change o focus. En el siguiente ejemplo se muestra un formulario. Cuando se pulsa el botón enviar, se captura el evento de submit y se para el envío del formulario si la casilla no está marcada.</p>
+
+<p>Es importante notar que el evento submit necesita recibir un parámetro que va a poseer el método "preventDefault()" que sirve para parar el envío del formulario.</p>
+
+<p>También se muestra un ejemplo del evento "change", para detectar si la casilla ha sido marcada. Si la casilla ha sido marcada, se mostrará o se ocultará el texto "condiciones".</p>
+
+<p>Por último, también se muestra la captura del evento "focus". Se usa para limpiar la entrada de texto la primera vez que se usa. Nota: No es necesario usar Javascript para hacer esto se puede usar el atributo placeholder:</p>
+<code><pre>&lt;input type='text' name='texto' <strong>placeholder='Texto por defecto'</strong>&gt;
+</pre></code>
+
+<p>El texto por defecto se borrará en cuando se escriba algo.</p>
+
+<p>El ejemplo completo:</p>
+
+<code id="eventos_form.html"></code>
+<script>insertar_codigo('src/eventos/eventos_form.html', 'eventos_form.html');</script>
+
+<h2>Eventos del teclado</h2>
+
+<p>Como ejemplo, se van a capturar los eventos del teclado.</p>
+
+<code id="eventos_key.html"></code>
+<script>insertar_codigo('src/eventos/eventos_key.html', 'eventos_key.html');</script>
+
+<h1>Ejecutar una función cada cierto tiempo: setInterval</h1>
+
+<p>Para ejecutar una función cada cierto tiempo o dejar de ejecutarla, se usará</p>
+<ul>
+  <li><strong>let timeInterval = setInterval(función, intervalo)</strong>: Ejecuta la función cada "intervalo" de tiempo indicado en milisegundos. Devuelve un objeto timeInterval que se puede usar para pararlo.</li>
+  <li><strong>clearInterval(timeInterval)</strong>: Para la ejecución de un setTimeout.</li>
+</ul>
+
+<p>En este ejemplo se crea un contador que cuenta 5 segundos y para:</p>
+<code id="eventos_interval.html"></code>
+<script>insertar_codigo('src/eventos/eventos_interval.html', 'eventos_interval.html');</script>
+
+
+
+<h1>Ejecutar una función después de un tiempo: setTimeout</h1>
+
+<p>Para ejecutar una función después de un tiempo y parar su ejecución, se usará</p>
+<ul>
+  <li><strong>let timeout = setTimeout(función, intervalo)</strong>: Ejecuta la función después de un  "intervalo" de tiempo indicado en milisegundos. Devuelve un objeto timeout que se puede usar para pararlo.</li>
+  <li><strong>clearTimeout(timeout)</strong>: Para la ejecución de un setTimeout.</li>
+</ul>
+
+<p>Por ejemplo:</p>
+<code id="eventos_timeout.html"></code>
+<script>insertar_codigo('src/eventos/eventos_timeout.html', 'eventos_timeout.html');</script>
+
+<p>Como curiosidad, no se puede llamar a la función setTimeout dentro de una función que esté siendo ejecutada por un setTimeout, los navegadores no lo permiten. En estos casos habrá que usar setInterval y parar su ejecución en el momento que se necesite.</p>
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
