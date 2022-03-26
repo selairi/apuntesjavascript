@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<script>
+	class Rectangulo {
+		constructor(a, b) {
+			this.a = a;
+			this.b = b;
+		}
+
+		// Se añaden los métodos
+		area() {
+			return this.a*this.b;
+		}
+
+		setA(a) {this.a = a;}
+
+		setB(b) {this.b = b;}
+	}
+
+	let r = new Rectangulo(10, 2);
+	document.write(r.area());
+</script>

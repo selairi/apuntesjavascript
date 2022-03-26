@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<script>
+	// Se define el constructor de Persona 
+	function Persona(nombre, edad) {
+		this.nombre = nombre;
+		this.edad = edad;
+		this.cumplirAgnos = function() {
+			this.edad++;
+		}
+	}
+
+	// Trabajador hereda de Persona
+	function Trabajador(nombre, edad, puesto) {
+		// Se llama al método call con los argumentos del constructor de la clase padre
+		Persona.call(this, nombre, edad);
+		this.puesto = puesto;
+	}
+
+	let r = new Trabajador("Pepe", 30, "Programador");
+	document.write(r.nombre);
+</script>

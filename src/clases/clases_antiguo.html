@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<script>
+	// Se define el objeto persona usando funciones
+	function Persona() {
+		this.nombre = '';
+		this.edad = 0;
+		this.cumplirAgnos = function() {
+			this.edad++;
+		}
+	}
+	let persona = new Persona();
+
+	// Se define el objeto rectángulo usando mapas
+	let rectangulo = {
+		"a": 10,
+		"b": 5,
+		"area": function() {
+			return this.a*this.b;
+		}
+	};
+</script>

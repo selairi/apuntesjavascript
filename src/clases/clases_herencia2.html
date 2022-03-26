@@ -1,0 +1,31 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<script>
+	class Rectangulo {
+		constructor(a, b) {
+			this.a = a;
+			this.b = b;
+		}
+
+		// Se añaden los métodos
+		area() {
+			return this.a*this.b;
+		}
+
+		setA(a) {this.a = a;}
+
+		setB(b) {this.b = b;}
+	}
+
+	class Cuadrado extends Rectangulo {
+		constructor(a) {
+			// Se llama al constructor de la clase padre
+			super(a, a);
+			this.perimetro = a*4; 
+		}
+	}
+
+let r = new Cuadrado(10);
+document.write(r.area());
+</script>

@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Clases';
+    var id_pagina = 'clases';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Clases</h1>
+
+<p>Hasta ahora se han visto dos formas diferentes de definir objetos:</p>
+<ul>
+	<li><a href="http://localhost:8000/objetos.html#__2">Usando funciones</a></li>
+	<li><a href="http://localhost:8000/estructuras_datos.html#__9">Usando mapas</a></li>
+</ul>
+
+<p>Por ejemplo:</p>
+<code id="clases_antiguo.html"></code>
+<script>insertar_codigo('src/clases/clases_antiguo.html', 'clases_antiguo.html');</script>
+
+<p>Existe una forma adicional de crear objetos y es usando class.</p>
+<code><pre>class Clase{
+	constructor(...) {...}
+};
+</pre></code>
+
+<p>Por ejemplo:</p>
+<code id="clases_class.html"></code>
+<script>insertar_codigo('src/clases/clases_class.html', 'clases_class.html');</script>
+
+<p>Se podría realizar una herencia simplemente copiando los atributos y métodos de la clase padre en la clase hija. Como esta tarea es muy tediosa, se tienen dos formas de hacer la herencia, usando el método call (si la clase se ha definido usando una función) y usando extends (si la clase se ha definido usando class).</p>
+<p>Para realizar herencia se usa el método call sobre el constructor de la clase padre en el constructor del hijo. Sólo se puede usar si la clase se ha definido usando funciones:</p>
+<code id="clases_herencia.html"></code>
+<script>insertar_codigo('src/clases/clases_herencia.html', 'clases_herencia.html');</script>
+
+<p>Se puede realizar una herencia de forma similar a como se hace en Java usando extends. En el siguiente ejemplo la clase Cuadrado es hija de la clase Persona.</p>
+<code id="clases_herencia2.html"></code>
+<script>insertar_codigo('src/clases/clases_herencia2.html', 'clases_herencia2.html');</script>
+
+
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
