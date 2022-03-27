@@ -54,7 +54,49 @@
 <code id="clases_herencia2.html"></code>
 <script>insertar_codigo('src/clases/clases_herencia2.html', 'clases_herencia2.html');</script>
 
+<h1>Módulos</h1>
 
+<p>Ya se dijo que Javascript se puede añadir al HTML insertándolo mediante la etiqueta script, o bien, haciendo un fichero con la extensión ".js" y escribiendo en el HTML:</p>
+
+<code><pre>&lt;script src='archivo.js'&gt;&lt;/script&gt;
+</pre></code>
+
+<p>Si se añade de esta forma, se puede acceder a cualquier variable o función del archivo con la extensión ".js".</p>
+
+<p>Existe otra forma de manejar los ficheros con la extensión ".js" y es creando módulos. Un módulo va a ser un archivo con la extensión ".js", pero sólo se pueden acceder a las variables o funciones que se hayan declarado como exportables. Por ejemplo:</p>
+<code id="modulo1.js"></code>
+<script>insertar_codigo('src/clases/modulo1.js', 'modulo1.js');</script>
+
+<p>En el ejemplo anterior, las variables "a" y "objeto" se declaran como exportables usando "export". La sintaxis de export es:</p>
+
+<code><pre>export {variable1, variable2, variable3,...}
+</pre></code>
+
+<p>Las variables "b" y "c" no se han declarado como exportables, por lo que no serán visibles desde otro módulo.</p>
+
+<p>Hay dos formas de importar un módulo:</p>
+<ul>
+  <li>Usando import</li>
+  <li>Usando script con el atributo "type='module'"</li>
+</ul>
+
+<p>En el siguiente ejemplo se importa "modulo1.js" usando import:</p>
+<code id="modulo2.js"></code>
+<script>insertar_codigo('src/clases/modulo2.js', 'modulo2.js');</script>
+
+<p>Como se puede ver la sintaxis es:</p>
+<code><pre>import {variable1, variable2, variable3,...} from "URL"
+</pre></code>
+
+<p>Es decir, se pone la lista de las variables a importar. También se debe indicar la URL del módulo.</p>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'>
+  <p><strong>Importante:</strong> Si se pusiera en la URL "modulo1.js", se generaría un error y el módulo no se importaría. Se debe poner siempre "./ruta" o "http://URL". Es decir, se deberá escribir "./modulo1.js".</p>
+</div>
+
+<p>En el siguiente ejemplo se usa script con el atributo "type='module'":</p>
+<code id="clases_modulos.html"></code>
+<script>insertar_codigo('src/clases/clases_modulos.html', 'clases_modulos.html');</script>
 
 <script>
     post_pagina(titulo, id_pagina);
