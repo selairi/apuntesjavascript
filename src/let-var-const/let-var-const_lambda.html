@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset='utf-8'>
+
+<button id='boton'>Botón</button>
+
+<script >
+function generarEvento() {
+  // Se define el objeto a, NO ES UNA VARIABLE GLOBAL
+  let a = {edad: 20, peso: 70};
+  let boton = document.getElementById("boton");
+  boton.addEventListener("click", 
+    function() {
+      // ¡Se puede acceder al objeto a desde el evento!
+      a.edad += 1;
+      alert("a.edad = " + a.edad);
+    }
+  ); 
+}
+generarEvento();
+</script>

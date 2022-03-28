@@ -1,0 +1,94 @@
+<!doctype html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href='w3.css' />
+    <link rel="stylesheet" href='local.css' />
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+
+<script src='estructura_pagina.js'></script>
+
+<script>
+    var titulo = 'Let, var y const';
+    var id_pagina = 'let-var-const';
+    pre_pagina(titulo, id_pagina);
+</script>
+
+<h1>Let, var y const</h1>
+
+<p>Ya se ha comentado el uso de var y let. Tanto var como let nos permiten cambiar la referencia al objeto. Ya se ha comentado que cuando se crea un objeto se reserva un espacio al mismo en la memoria RAM. Las variables son como punteros, flechas, que apuntan a estas zonas de memoria:</p>
+
+<img src="imagenes/objetos/ram.svg"></img>
+
+<p>En la imagen anterior las variables "pepe" y "jose" apuntan al mismo objeto y las variables "a" y "b" apuntan cada una a un objeto diferente.</p>
+
+<p>Esto correspondería al código:</p>
+<code><pre>let pepe = { "edad":20, "peso": 70};
+let jose = pepe;
+var a = 2;
+let b = 2;
+</pre></code>
+
+<p>En cualquier parte del código se pueden asignar a otro objeto:</p>
+<code><pre>a = jose;
+</pre></code>
+
+<p>Por lo que después de esta línea "pepe", "jose" y "a" apuntarían al mismo objeto, a la misma porción de memoria RAM.</p>
+
+<p>Con <strong>const</strong> se definen constantes que, una vez asignados a un objeto, no pueden apuntar a otro. No es posible asignarles otro objeto. Por ejemplo:</p>
+
+<code><pre>const a = { edad:20, peso: 70};
+a = 1; // Esta línea genera un error
+</pre></code>
+
+<div class='w3-panel w3-leftbar w3-sand w3-serif'>
+  <p><strong>Importante:</strong> Siempre que se defina un objeto hay que procurar asignarlo a una constante, pues se evitan errores.</p>
+</div>
+
+<h1>Let, var y const: Variables globales y funciones</h1>
+
+<p>Si una variable se define fuera de cualquier bloque de código y función es una variable global y está disponible para todo el código.</p>
+<code><pre>// Se define "a" como una variable global:
+const a = { "edad":20, "peso": 70 };
+
+function f() {
+  // Desde la función se puede modificar el objeto
+  a.edad += 1;
+}
+
+// Se invoca a la función:
+f();
+console.log(a.edad); // a.edad vale 21
+</pre></code>
+
+<p>En principio, las variables que se definen en una función, no son variables globales y se destruyen al salir de la función. Pero se tiene la siguiente excepción:</p>
+<code id="let-var-const_lambda.html"></code>
+<script>insertar_codigo('src/let-var-const/let-var-const_lambda.html', 'let-var-const_lambda.html');</script>
+
+<p>La variable "a" se ha definido dentro de la función "generarEvento()", pero hay una función se pasa como argumento en el método addEventListener() y que se ejecuta cuando se produce el evento "click". ¡Dentro de esta función se hace una llamada a la variable "a"!. Recordemos que "a" está definida fuera de ella y dentro de "generarEvento()". Además, si se va pulsando el botón, se puede ver que el objeto referenciado por "a" no se destruye y el valor de "a.edad" va aumentando cada vez que se pulsa el botón.</p>
+
+<h1>Hoisting</h1>
+
+<p>Hay que procurar no usar var en el código. Let va a producir, a la larga, menos errores. Uno de estos casos es el hoisting</p>
+<code id="let-var-const_hoisting.html"></code>
+<script>insertar_codigo('src/let-var-const/let-var-const_hoisting.html', 'let-var-const_hoisting.html');</script>
+
+<p>Si nos fijamos en el código, la variable "a" se puede usar incluso antes de declararse, aunque se devuelve un "undefined". Si una variable es definida con var, se puede usar antes de definirse, hoisting. Pero las definidas con let no se pueden usar antes de ser definas, generando un error en la consola de errores. Por ello es mejor, a largo plazo, usar let en lugar de var para definir las variables. Se deja al lector como ejercicio pensar en situaciones en las que el uso de var en lugar de let puede dar lugar a errores.</p>
+
+
+
+<script>
+    post_pagina(titulo, id_pagina);
+</script>
+
+</body>
+</html>
