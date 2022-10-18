@@ -56,7 +56,7 @@
 <li>renderer.js: Será el proceso que se ejecutará en el navegador e interactúa con el navegador.</li>
 <li>index.html: Es la página web que mostrará el navegador.</li>
 <li>style.css: Hoja de estilo.</li>
-<li>preload.js: Va a permitir compartir un objeto IPC con el rendere.js para poder enviar y recibir mensajes.</li>
+<li>preload.js: Va a permitir compartir un objeto IPC con el renderer.js para poder enviar y recibir mensajes.</li>
 </ul>
 
 <p>El ejemplo simplemente será una página web con un botón y un cuadro de texto, cuando el usuario pulse el botón, se enviará un mensaje a "main.js" con el texto de cuadro de texto. "main.js" guardará un archivo en disco con el texto y devolverá un mensaje de respuesta indicando a "renderer.js" si el archivo ha sido almacenado correctamente. "renderer.js" mostrará un mensaje alert en el navegador con la respuesta de "main.js".</p>

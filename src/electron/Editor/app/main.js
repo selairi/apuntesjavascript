@@ -28,6 +28,7 @@ function createWindow() {
 				height: 660,
 				webPreferences: {
 					nodeIntegration: false, // Se desactiva el uso de require en el navegador
+          contextIsolation: false, // Se permite enviar mensajes entre el navegador y main.js
 					preload: `${__dirname}/preload.js` // Se ejecuta preload.js para compartir objetos entre el navegador y main.js
 					}
 			});

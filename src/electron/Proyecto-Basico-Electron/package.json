@@ -15,6 +15,6 @@
   "author": "",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "electron": "^2.0.4"
+    "electron": "^21.1.1"
   }
 }
